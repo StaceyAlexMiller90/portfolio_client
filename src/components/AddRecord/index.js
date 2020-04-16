@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { imageUrl } from '../../config/constants'
-import { addRecord } from '../../store/image/actions'
+import { addRecord } from '../../store/record/actions'
 import "react-dropzone-uploader/dist/styles.css";
 import Dropzone from "react-dropzone-uploader";
-import RecordDetailsForm from '../RecordDetailsForm'
+import RecordDetailsForm from './RecordDetailsForm'
 
-const ImageUploader = () => {
+const AddRecord = () => {
   const dispatch = useDispatch()
   const [record, setRecord] = useState('')
   const [suggestions, setSuggestions] = useState('')
+  console.log(imageUrl)
 
   // specify upload params and url for your files
   const getUploadParams = async ({ file, meta }) => { 
@@ -17,7 +18,7 @@ const ImageUploader = () => {
     body.append('file', file)
     body.append('upload_preset', 'Records')
     return { 
-      url: `${imageUrl}/image/upload`,
+      url: `${imageUrl}`,
       body,
       headers: { "X-Requested-With": "XMLHttpRequest" }
     }
@@ -56,4 +57,4 @@ const ImageUploader = () => {
   )
 }
 
-export default ImageUploader
+export default AddRecord

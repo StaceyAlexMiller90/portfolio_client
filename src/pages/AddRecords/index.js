@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import ImageUploader from '../../components/ImageUploader'
+import AddRecord from '../../components/AddRecord'
 
 const AddRecords = () => {
   
   return (
     <div>
       Add a record page
-      <ImageUploader />
+      <AddRecord />
     </div>
   )
 }

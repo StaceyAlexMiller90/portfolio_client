@@ -3,7 +3,6 @@ const initialState = {
   token: localStorage.getItem("token"),
   name: null,
   email: null,
-  isArtist: null
 };
 
 export default (state = initialState, action) => {
