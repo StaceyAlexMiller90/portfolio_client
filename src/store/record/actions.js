@@ -8,10 +8,10 @@ import {
   setMessage
 } from "../appState/actions";
 
-export const addRecord = file => {
+export const addRecord = record => {
   return async (dispatch, getState) => {
     dispatch(appLoading())
-    console.log('action file', file)
+    console.log(record)
     dispatch(appDoneLoading())
   }
 }
