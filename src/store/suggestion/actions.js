@@ -1,5 +1,5 @@
 import { apiUrl } from '../../config/constants'
-import { imageUrl } from '../../config/constants'
+import { selectToken } from "../user/selectors";
 import axios from "axios";
 import {
   appLoading,
@@ -10,9 +10,10 @@ import {
 
 export const getSuggestions = (imageUrl) => {
   return async (dispatch, getState) => {
+    const token = selectToken(getState())
     dispatch(appLoading())
     try {
-      const response = axios.post(`${apiUrl}/suggestion`,
+      const response = await axios.post(`${apiUrl}/suggestion`,
       { imageUrl },
       {
         headers: {

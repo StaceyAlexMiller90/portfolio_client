@@ -5,12 +5,12 @@ import { addRecord } from '../../store/record/actions'
 import "react-dropzone-uploader/dist/styles.css";
 import Dropzone from "react-dropzone-uploader";
 import RecordDetailsForm from './RecordDetailsForm'
+import { getSuggestions } from '../../store/suggestion/actions';
 
 const AddRecord = () => {
   const dispatch = useDispatch()
   const [record, setRecord] = useState('')
   const [suggestions, setSuggestions] = useState('')
-  console.log(imageUrl)
 
   // specify upload params and url for your files
   const getUploadParams = async ({ file, meta }) => { 
@@ -33,6 +33,7 @@ const AddRecord = () => {
     const res = JSON.parse(files[0].xhr.responseText);
     const secureUrl = res.secure_url
     setRecord(secureUrl)
+    dispatch(getSuggestions(secureUrl))
     // console.log(files.map(f => f.meta))
     allFiles.forEach(f => f.remove())
   }
