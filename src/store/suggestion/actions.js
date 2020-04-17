@@ -8,6 +8,14 @@ import {
   setMessage
 } from "../appState/actions";
 
+
+const sendSuggestions = (data) => {
+  return {
+    type: 'SUGGESTIONS_FETCHED',
+    payload: data
+  }
+}
+
 export const getSuggestions = (imageUrl) => {
   return async (dispatch, getState) => {
     const token = selectToken(getState())
@@ -21,6 +29,8 @@ export const getSuggestions = (imageUrl) => {
         }
       })
       console.log(response.data)
+      dispatch(sendSuggestions(response.data))
+      dispatch(showMessageWithTimeout('dark', true, response.data.message))
     } catch(e) {
       if(e.response) {
         console.log(e.response.data.message);

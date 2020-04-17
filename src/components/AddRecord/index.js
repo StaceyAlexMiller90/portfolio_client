@@ -6,11 +6,12 @@ import "react-dropzone-uploader/dist/styles.css";
 import Dropzone from "react-dropzone-uploader";
 import RecordDetailsForm from './RecordDetailsForm'
 import { getSuggestions } from '../../store/suggestion/actions';
+import { selectSuggestions } from '../../store/suggestion/selectors'
 
 const AddRecord = () => {
   const dispatch = useDispatch()
   const [record, setRecord] = useState('')
-  const [suggestions, setSuggestions] = useState('')
+  const suggestions = useSelector(selectSuggestions)
 
   // specify upload params and url for your files
   const getUploadParams = async ({ file, meta }) => { 
@@ -40,7 +41,7 @@ const AddRecord = () => {
 
   return (
     <div>
-      {record ? 
+      {record && suggestions ? 
       <RecordDetailsForm recordUrl={record} suggestions={suggestions}/>
       : <>
         <h3>Upload your record</h3>

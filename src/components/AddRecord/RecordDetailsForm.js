@@ -1,10 +1,41 @@
 import React from 'react'
+import { Container } from "react-bootstrap";
+import Loading from '../Loading'
+import { useDispatch, useSelector } from "react-redux";
+import SuggestionCard from '../SuggestionCard'
 
 const RecordDetailsForm = (props) => {
+  const keywords = props.suggestions.suggestion
+  const results = props.suggestions.data
+
+
+  console.log(results)
+
+  if(!props.suggestions) {
+    return <Loading />
+  } 
+
   return (
     <div>
-      <img style={{width: '100px'}}
+      <h4>We detect your record as "{keywords}"</h4>
+      <p>Your Image:</p>
+      <img alt='User Upload' style={{width: '100px'}}
            src={props.recordUrl}></img>
+      <p>Search results:</p>
+      <Container className='mb-4 m-auto row d-flex align-items-stretch'>
+      {results.map(result => {
+        return <SuggestionCard 
+                key={result.id} 
+                title={result.title}
+                artist={result.artist}
+                imageUrl={result.cover_image}
+                genre={result.genre}
+                style={result.style}
+                year={result.year}
+                recordTitle={result.recordTitle}
+                />
+      })}
+       </Container>
     </div>
   )
 }
