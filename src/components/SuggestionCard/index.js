@@ -17,10 +17,10 @@ const SuggestionCard = (props) => {
         <Card.Footer>
           <Row className='d-flex justify-content-around'>
           <p>Artist: {props.artist} Title: {props.recordTitle}</p>
-          <p>Genre: {props.genre.join(', ')}</p>
+          <p>Genre: {props.genre.length > 1 ? props.genre.join(', '): props.genre}</p>
           </Row>
           <Row className='d-flex justify-content-around'>
-          <p>Style: {props.style.join(', ')}</p>
+          <p>Style: {props.style.length > 1 ? props.style.join(', ') : props.style}</p>
           <p>Year Released: {props.year}</p>
           </Row>
         </Card.Footer>

@@ -8,8 +8,12 @@ const RecordDetailsForm = (props) => {
   const keywords = props.suggestions.suggestion
   const results = props.suggestions.data
 
-
-  console.log(results)
+  // const filteredResults = results.filter(item => {
+  //   const {title, artist, imageUrl, genre, style, year, recordTitle, format} = item
+  //   if(title, artist, imageUrl, genre, style, year, recordTitle) {
+  //     return true
+  //   } console.log('false')
+  // })
 
   if(!props.suggestions) {
     return <Loading />
