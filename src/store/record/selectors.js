@@ -1,0 +1,1 @@
+export const selectAllUserRecords = state => state.record
