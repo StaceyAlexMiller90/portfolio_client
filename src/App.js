@@ -9,6 +9,7 @@ import { selectAppLoading } from "./store/appState/selectors";
 import LandingPage from "./pages/LandingPage";
 import Browse from "./pages/Browse";
 import AddRecords from "./pages/AddRecords";
+import ManualAddRecord from './components/ManualAddRecord'
 import Summary from "./pages/Summary";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -31,6 +32,7 @@ function App() {
         <Route exact path="/" component={LandingPage} />
         <Route path="/browse" component={Browse} />
         <Route path="/addrecords" component={AddRecords} />
+        <Route path="/manualadd" component={ManualAddRecord} />
         <Route path="/summary" component={Summary} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />

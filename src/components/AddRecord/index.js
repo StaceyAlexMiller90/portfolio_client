@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { imageUrl } from '../../config/constants'
-import { addRecord } from '../../store/record/actions'
 import "react-dropzone-uploader/dist/styles.css";
 import Dropzone from "react-dropzone-uploader";
-import RecordDetailsForm from './RecordDetailsForm'
+import SearchResults from '../../pages/SearchResults'
 import { getSuggestions } from '../../store/suggestion/actions';
 import { selectSuggestions } from '../../store/suggestion/selectors'
+import { Link } from 'react-router-dom'
 
 const AddRecord = () => {
   const dispatch = useDispatch()
@@ -42,7 +42,7 @@ const AddRecord = () => {
   return (
     <div>
       {record && suggestions ? 
-      <RecordDetailsForm recordUrl={record} suggestions={suggestions}/>
+      <SearchResults recordUrl={record} suggestions={suggestions}/>
       : <>
         <h3>Upload your record</h3>
         <Dropzone 

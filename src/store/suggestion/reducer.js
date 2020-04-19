@@ -10,7 +10,7 @@ export default (state = initialState, action) => {
     case 'SUGGESTIONS_FETCHED':
       return {
         suggestion: action.payload.suggestion,
-        data: action.payload.data 
+        data: action.payload.data
       }
 
     default:
