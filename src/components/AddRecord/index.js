@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { imageUrl } from '../../config/constants'
-import { addRecord } from '../../store/record/actions'
 import "react-dropzone-uploader/dist/styles.css";
 import Dropzone from "react-dropzone-uploader";
-import RecordDetailsForm from './RecordDetailsForm'
+import SearchResults from '../../pages/SearchResults'
+import { getSuggestions } from '../../store/suggestion/actions';
+import { selectSuggestions } from '../../store/suggestion/selectors'
+import { Link } from 'react-router-dom'
 
 const AddRecord = () => {
   const dispatch = useDispatch()
   const [record, setRecord] = useState('')
-  const [suggestions, setSuggestions] = useState('')
-  console.log(imageUrl)
+  const suggestions = useSelector(selectSuggestions)
 
   // specify upload params and url for your files
   const getUploadParams = async ({ file, meta }) => { 
@@ -33,14 +34,15 @@ const AddRecord = () => {
     const res = JSON.parse(files[0].xhr.responseText);
     const secureUrl = res.secure_url
     setRecord(secureUrl)
+    dispatch(getSuggestions(secureUrl))
     // console.log(files.map(f => f.meta))
     allFiles.forEach(f => f.remove())
   }
 
   return (
     <div>
-      {record ? 
-      <RecordDetailsForm recordUrl={record} suggestions={suggestions}/>
+      {record && suggestions ? 
+      <SearchResults recordUrl={record} suggestions={suggestions}/>
       : <>
         <h3>Upload your record</h3>
         <Dropzone 

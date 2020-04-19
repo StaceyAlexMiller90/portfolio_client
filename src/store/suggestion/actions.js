@@ -1,5 +1,5 @@
 import { apiUrl } from '../../config/constants'
-import { imageUrl } from '../../config/constants'
+import { selectToken } from "../user/selectors";
 import axios from "axios";
 import {
   appLoading,
@@ -8,11 +8,20 @@ import {
   setMessage
 } from "../appState/actions";
 
+
+const sendSuggestions = (data) => {
+  return {
+    type: 'SUGGESTIONS_FETCHED',
+    payload: data
+  }
+}
+
 export const getSuggestions = (imageUrl) => {
   return async (dispatch, getState) => {
+    const token = selectToken(getState())
     dispatch(appLoading())
     try {
-      const response = axios.post(`${apiUrl}/suggestion`,
+      const response = await axios.post(`${apiUrl}/suggestion`,
       { imageUrl },
       {
         headers: {
@@ -20,6 +29,8 @@ export const getSuggestions = (imageUrl) => {
         }
       })
       console.log(response.data)
+      dispatch(sendSuggestions(response.data))
+      dispatch(showMessageWithTimeout('dark', true, response.data.message))
     } catch(e) {
       if(e.response) {
         console.log(e.response.data.message);

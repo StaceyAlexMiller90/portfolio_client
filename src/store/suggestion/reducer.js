@@ -1,10 +1,20 @@
 
 const initialState = {
-  artistName: null,
-  recordName: null,
-  genre: null,
-  style: null,
-  yearReleased: null,
-  coverArtwork: null,
-  averagePrice: null,
+  suggestion: null,
+  data: []
 };
+
+
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case 'SUGGESTIONS_FETCHED':
+      return {
+        suggestion: action.payload.suggestion,
+        data: action.payload.data
+      }
+
+    default:
+      return state;
+  }
+};
+
