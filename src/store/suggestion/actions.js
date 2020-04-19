@@ -28,7 +28,6 @@ export const getSuggestions = (imageUrl) => {
           Authorization: `Bearer ${token}`
         }
       })
-      console.log(response.data)
       dispatch(sendSuggestions(response.data))
       dispatch(showMessageWithTimeout('dark', true, response.data.message))
     } catch(e) {

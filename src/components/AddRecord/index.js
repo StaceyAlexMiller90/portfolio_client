@@ -45,12 +45,16 @@ const AddRecord = () => {
       <SearchResults recordUrl={record} suggestions={suggestions}/>
       : <>
         <h3>Upload your record</h3>
-        <Dropzone 
+        <Dropzone
+          styles={{
+            dropzone: {width: '500px', height: '400px'}, 
+            inputLabel: {color: 'black'}}
+          }
           getUploadParams={getUploadParams}
           // onChangeStatus={handleChangeStatus}
           onSubmit={handleSubmit}
-          inputContent={'Upload your record cover here'}
-          inputWithFilesConten={null}
+          inputContent={'Drag or click to add your record cover'}
+          inputWithFilesContent={null}
           maxFiles={1}
           multiple={false}
           accept="image/*"/>
