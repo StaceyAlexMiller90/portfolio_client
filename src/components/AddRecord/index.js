@@ -35,7 +35,6 @@ const AddRecord = () => {
     const secureUrl = res.secure_url
     setRecord(secureUrl)
     dispatch(getSuggestions(secureUrl))
-    // console.log(files.map(f => f.meta))
     allFiles.forEach(f => f.remove())
   }
 

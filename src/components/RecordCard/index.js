@@ -7,7 +7,6 @@ import { TiDeleteOutline } from "react-icons/ti";
 const RecordCard = (props) => {
   const {id, title, artist, lowestPrice, genre, style, format, year, imageUrl} = props
   const dispatch = useDispatch()
-  console.log(imageUrl)
 
   const removeRecord = id => {
     dispatch(removeUserRecord(id))
