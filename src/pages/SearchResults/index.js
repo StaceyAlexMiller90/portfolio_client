@@ -16,6 +16,9 @@ const SearchResults = (props) => {
 	if (!props.suggestions) {
 		return <Loading />
 	}
+	if (token === null) {
+		history.push('/')
+	}
 
 	return (
 		<div>
@@ -26,12 +29,6 @@ const SearchResults = (props) => {
 				style={{ width: '100px' }}
 				src={props.recordUrl}
 			></img>
-			<Link to="/manualadd">
-				<button>Click to add manually</button>
-			</Link>
-			<Link to="/addrecord">
-				<button>Click here to retake picture</button>
-			</Link>
 			<p>Search results:</p>
 			<div style={{ marginLeft: '100px' }}>
 				{results.length === 0 ? (
