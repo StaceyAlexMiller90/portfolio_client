@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { fetchUserRecords } from '../../store/record/actions'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { selectToken } from '../../store/user/selectors'
 import { selectAllUserRecords } from '../../store/record/selectors'
 import Loading from '../../components/Loading'
 import RecordCard from '../../components/RecordCard'
 import '../../components/RecordCard/RecordCard.css'
+import Container from '@material-ui/core/Container'
+import TextField from '@material-ui/core/TextField'
 import MultipleSelect from '../../components/MultipleSelect'
 
 const Browse = () => {
 	const dispatch = useDispatch()
+	const token = useSelector(selectToken)
+	const history = useHistory()
 	const records = useSelector(selectAllUserRecords)
 	const [genre, setGenre] = useState([])
 	const [style, setStyle] = useState([])
@@ -19,6 +25,8 @@ const Browse = () => {
 	useEffect(() => {
 		dispatch(fetchUserRecords())
 	}, [])
+
+	console.log(records)
 
 	const getSelectOptions = (option) => {
 		const options = records.flatMap((record) => {
@@ -68,18 +76,32 @@ const Browse = () => {
 		return false
 	})
 
+	if (token === null) {
+		history.push('/')
+	}
+
 	if (!records) {
 		return <Loading />
 	}
 
 	return (
 		<>
-			<div style={{ display: 'inline' }}>
-				<input
-					type="text"
+			<div
+				style={{
+					margin: '50px',
+					display: 'flex',
+					flexWrap: 'wrap',
+					justifyContent: 'left',
+				}}
+			>
+				<TextField
+					style={{ marginRight: '3rem' }}
 					placeholder="search by title"
+					id="outlined-basic"
+					label="Title Search"
+					variant="outlined"
 					onChange={(e) => setTitle(e.target.value)}
-				></input>
+				/>
 				<MultipleSelect
 					options={genreArray}
 					label={'genre'}
@@ -101,32 +123,30 @@ const Browse = () => {
 					updateFilter={updateFilter}
 				/>
 			</div>
-			<div className="body">
-				{records.length === 0 ? (
-					<p>You currently have no records on your shelf</p>
-				) : filteredRecords.length === 0 ? (
-					<p> No records match your filters </p>
-				) : (
-					<div className="record-container">
-						{filteredRecords.map((record) => {
-							return (
-								<RecordCard
-									key={record.id}
-									id={record.id}
-									title={record.title}
-									artist={record.artist}
-									year={record.year}
-									genre={record.genre}
-									style={record.style}
-									format={record.format}
-									lowestPrice={record.lowestPrice}
-									imageUrl={record.imageUrl}
-								/>
-							)
-						})}
-					</div>
-				)}
-			</div>
+			{records.length === 0 ? (
+				<p>You currently have no records on your shelf</p>
+			) : filteredRecords.length === 0 ? (
+				<p> No records match your filters </p>
+			) : (
+				<div className="record-container">
+					{filteredRecords.map((record) => {
+						return (
+							<RecordCard
+								key={record.id}
+								id={record.id}
+								title={record.title}
+								artist={record.artist}
+								year={record.year}
+								genre={record.genre}
+								style={record.style}
+								format={record.format}
+								lowestPrice={record.lowestPrice}
+								imageUrl={record.imageUrl}
+							/>
+						)
+					})}
+				</div>
+			)}
 		</>
 	)
 }
