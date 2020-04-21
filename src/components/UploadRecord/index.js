@@ -3,15 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { imageUrl } from '../../config/constants'
 import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader'
-import SearchResults from '../../pages/SearchResults'
+
 import { getSuggestions } from '../../store/suggestion/actions'
-import { selectSuggestions } from '../../store/suggestion/selectors'
 import { Link } from 'react-router-dom'
 
-const AddRecord = () => {
+const UploadRecord = () => {
 	const dispatch = useDispatch()
-	const [record, setRecord] = useState('')
-	const suggestions = useSelector(selectSuggestions)
 
 	// specify upload params and url for your files
 	const getUploadParams = async ({ file, meta }) => {
@@ -33,37 +30,33 @@ const AddRecord = () => {
 	const handleSubmit = (files, allFiles) => {
 		const res = JSON.parse(files[0].xhr.responseText)
 		const secureUrl = res.secure_url
-		setRecord(secureUrl)
 		dispatch(getSuggestions(secureUrl))
 		allFiles.forEach((f) => f.remove())
 	}
 
+	// navigator.mediaDevices.getUserMedia({
+	// 	video: { facingMode: 'user' },
+	// 	audio: false,
+	// })
+
 	return (
-		<div>
-			{record && suggestions ? (
-				<SearchResults recordUrl={record} suggestions={suggestions} />
-			) : (
-				<>
-					<Dropzone
-						styles={{
-							dropzone: { width: '500px', height: '400px' },
-							inputLabel: { color: 'black' },
-							preview: { height: '400px' },
-							previewImage: { maxHeight: '200px', maxWidth: '200px' },
-						}}
-						getUploadParams={getUploadParams}
-						// onChangeStatus={handleChangeStatus}
-						onSubmit={handleSubmit}
-						inputContent={'Drag or click to add your record cover'}
-						inputWithFilesContent={null}
-						maxFiles={1}
-						multiple={false}
-						accept="image/*"
-					/>
-				</>
-			)}
-		</div>
+		<Dropzone
+			styles={{
+				dropzone: { width: '500px', height: '400px', marginTop: '50px' },
+				inputLabel: { color: 'black' },
+				preview: { height: '400px' },
+				previewImage: { maxHeight: '200px', maxWidth: '200px' },
+			}}
+			getUploadParams={getUploadParams}
+			// onChangeStatus={handleChangeStatus}
+			onSubmit={handleSubmit}
+			inputContent={'Drag or click to add your record cover'}
+			inputWithFilesContent={null}
+			maxFiles={1}
+			multiple={false}
+			accept="image/*"
+		/>
 	)
 }
 
-export default AddRecord
+export default UploadRecord
