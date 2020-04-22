@@ -1,13 +1,22 @@
-import React from "react";
-import Spinner from "react-bootstrap/Spinner";
-import "./spinner.css";
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import LinearProgress from '@material-ui/core/LinearProgress'
 
-export default function Loading() {
-  return (
-    <div className="loading_spinner">
-      <Spinner animation="border" role="status">
-        <span className="sr-only">Loading...</span>
-      </Spinner>
-    </div>
-  );
+const useStyles = makeStyles((theme) => ({
+	root: {
+		width: '100%',
+		'& > * + *': {
+			marginTop: theme.spacing(2),
+		},
+	},
+}))
+
+export default function LinearIndeterminate() {
+	const classes = useStyles()
+
+	return (
+		<div className={classes.root}>
+			<LinearProgress />
+		</div>
+	)
 }

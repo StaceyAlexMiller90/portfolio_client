@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import RecordCard from '../../components/RecordCard'
 import { selectToken } from '../../store/user/selectors'
 import { useHistory } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 
 const SearchResults = (props) => {
 	const token = useSelector(selectToken)
@@ -34,23 +33,25 @@ const SearchResults = (props) => {
 				{results.length === 0 ? (
 					<p>Sorry, no records were found</p>
 				) : (
-					results.map((result) => {
-						return (
-							<RecordCard
-								key={result.id}
-								suggestion={true}
-								id={result.id}
-								title={result.title}
-								artist={result.artist}
-								imageUrl={result.imageUrl}
-								genre={result.genre}
-								style={result.style}
-								year={result.year}
-								lowestPrice={result.lowestPrice}
-								format={result.format}
-							/>
-						)
-					})
+					<div className="record-container">
+						{results.map((result) => {
+							return (
+								<RecordCard
+									key={result.id}
+									suggestion={true}
+									id={result.id}
+									title={result.title}
+									artist={result.artist}
+									imageUrl={result.imageUrl}
+									genre={result.genre}
+									style={result.style}
+									year={result.year}
+									lowestPrice={result.lowestPrice}
+									format={result.format}
+								/>
+							)
+						})}
+					</div>
 				)}
 			</div>
 		</div>

@@ -39,7 +39,6 @@ const RecordCard = (props) => {
 	}
 
 	const addRecord = () => {
-		console.log('add record')
 		dispatch(
 			addARecord({
 				id,

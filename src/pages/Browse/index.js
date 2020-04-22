@@ -7,7 +7,6 @@ import { selectAllUserRecords } from '../../store/record/selectors'
 import Loading from '../../components/Loading'
 import RecordCard from '../../components/RecordCard'
 import '../../components/RecordCard/RecordCard.css'
-import Container from '@material-ui/core/Container'
 import TextField from '@material-ui/core/TextField'
 import MultipleSelect from '../../components/MultipleSelect'
 
@@ -23,10 +22,12 @@ const Browse = () => {
 	const [title, setTitle] = useState('')
 
 	useEffect(() => {
-		dispatch(fetchUserRecords())
-	}, [])
-
-	console.log(records)
+		if (!token) {
+			history.push('/')
+		} else {
+			dispatch(fetchUserRecords())
+		}
+	}, [token, history])
 
 	const getSelectOptions = (option) => {
 		const options = records.flatMap((record) => {
@@ -76,10 +77,6 @@ const Browse = () => {
 		return false
 	})
 
-	if (token === null) {
-		history.push('/')
-	}
-
 	if (!records) {
 		return <Loading />
 	}
@@ -88,7 +85,7 @@ const Browse = () => {
 		<>
 			<div
 				style={{
-					margin: '50px',
+					margin: '20px',
 					display: 'flex',
 					flexWrap: 'wrap',
 					justifyContent: 'left',
