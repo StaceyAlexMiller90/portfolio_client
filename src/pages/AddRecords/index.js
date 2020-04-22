@@ -7,6 +7,7 @@ import { selectSuggestions } from '../../store/suggestion/selectors'
 import { clearSuggestionInfo } from '../../store/suggestion/actions'
 import SearchResults from '../SearchResults'
 import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button'
 
 const AddRecords = () => {
 	const dispatch = useDispatch()
@@ -51,12 +52,12 @@ const AddRecords = () => {
 						add info manually
 					</h5>
 					<Link to="/manualadd">
-						<button>Click to add info manually</button>
+						<Button variant="outlined">Click to add info manually</Button>
 					</Link>
 					<Link to="/addrecords">
-						<button onClick={clearSuggestion}>
+						<Button variant="outlined" onClick={clearSuggestion}>
 							Click here to retake picture
-						</button>
+						</Button>
 					</Link>
 					<SearchResults
 						recordUrl={suggestions.uploadImage}

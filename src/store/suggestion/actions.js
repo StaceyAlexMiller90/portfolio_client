@@ -34,14 +34,14 @@ export const getSuggestions = (imageUrl) => {
 				}
 			)
 			dispatch(sendSuggestions({ data: response.data, image: imageUrl }))
-			dispatch(showMessageWithTimeout('dark', true, response.data.message))
+			dispatch(showMessageWithTimeout('success', response.data.message))
 		} catch (e) {
 			if (e.response) {
 				console.log(e.response.data.message)
-				dispatch(setMessage('danger', true, e.response.data.message))
+				dispatch(setMessage('error', e.response.data.message))
 			} else {
 				console.log(e.message)
-				dispatch(setMessage('danger', true, e.message))
+				dispatch(setMessage('error', e.message))
 			}
 		}
 		dispatch(appDoneLoading())
