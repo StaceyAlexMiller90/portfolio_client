@@ -25,10 +25,14 @@ const AddRecords = () => {
 	}, [token, history])
 
 	return (
-		<div>
+		<div
+			style={{
+				margin: '10px',
+			}}
+		>
 			{!suggestions.suggestion ? (
-				<div style={{ marginTop: '20px' }}>
-					<h3>Add records to your collection!</h3>
+				<div>
+					<h4>Add records to your collection!</h4>
 					<h5>Take a quick pic & we do the hard work for you!</h5>
 					<p>
 						This feature uses image recognition technology - once uploaded, your

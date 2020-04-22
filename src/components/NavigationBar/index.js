@@ -1,30 +1,45 @@
-import React from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectToken } from "../../store/user/selectors";
-import NavbarItem from "./NavbarItem";
-import LoggedIn from "./LoggedIn";
-import LoggedOut from "./LoggedOut";
+import React, { useState } from 'react'
+import { NavLink, Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { selectToken } from '../../store/user/selectors'
+import LoggedIn from './LoggedIn'
+import LoggedOut from './LoggedOut'
+import './NavBar.css'
 
 export default function NavigationBar() {
-  const token = useSelector(selectToken);
+	const token = useSelector(selectToken)
+	const [open, setOpen] = useState(false)
 
-  const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
+	const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />
 
-  return (
-    <Navbar style={{backgroundColor: 'black', color: 'white'}} variant="dark" expand="lg">
-      <Navbar.Brand as={NavLink} to="/">
-        {/* <img alt='Logo' src={logo} style={{width: '200px'}}/> */}
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" className='toggler'/>
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav style={{ width: "100%" }} fill>
-          <NavbarItem path="/" linkText="Home" />
-          {loginLogoutControls}
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
-  );
+	return (
+		<div className="NavBar">
+			<Link className="logo" exact to="/">
+				<span style={{ fontFamily: 'bigJohn' }}>Record</span>
+				<span style={{ fontFamily: 'slimJoe' }}>nise</span>
+			</Link>
+			{open ? (
+				<div className="NavLinks">
+					<NavLink
+						activeClassName="activeNavItem"
+						className="NavItem"
+						exact
+						to="/"
+					>
+						Home
+					</NavLink>
+					{loginLogoutControls}
+				</div>
+			) : null}
+			<button
+				className={`hamburger hamburger--arrowalt ${open ? 'is-active' : null}`}
+				type="button"
+				onClick={() => setOpen(!open)}
+			>
+				<span className="hamburger-box">
+					<span className="hamburger-inner"></span>
+				</span>
+			</button>
+		</div>
+	)
 }
