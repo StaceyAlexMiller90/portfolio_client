@@ -12,10 +12,6 @@ import { getSuggestions } from '../../store/suggestion/actions'
 import TextField from '@material-ui/core/TextField'
 import { makeStyles } from '@material-ui/core/styles'
 import { FormGroup } from '@material-ui/core'
-<<<<<<< HEAD
-=======
-import Container from '@material-ui/core/Container'
->>>>>>> 0f3529c09c8333b2a5949f5763f173244939893e
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -34,10 +30,7 @@ const AddRecords = (props) => {
 	const suggestions = useSelector(selectSuggestions)
 	const [title, setTitle] = useState('')
 	const [artist, setArtist] = useState('')
-<<<<<<< HEAD
 	const [searchedAgain, setSearchedAgain] = useState(false)
-=======
->>>>>>> 0f3529c09c8333b2a5949f5763f173244939893e
 	const pageKey = props.location.key
 
 	const clearSuggestion = () => {
@@ -46,10 +39,7 @@ const AddRecords = (props) => {
 
 	const searchAgain = () => {
 		dispatch(getSuggestions(suggestions.uploadImage, title, artist))
-<<<<<<< HEAD
 		setSearchedAgain(true)
-=======
->>>>>>> 0f3529c09c8333b2a5949f5763f173244939893e
 	}
 
 	useEffect(() => {
@@ -89,42 +79,24 @@ const AddRecords = (props) => {
 						<FormGroup>
 							<TextField
 								id="outlined-basic"
-<<<<<<< HEAD
 								label="artist"
 								variant="outlined"
 								value={artist}
 								onChange={(event) => setArtist(event.target.value)}
 								type="text"
 								placeholder="Enter the artist"
-=======
-								label="title"
-								variant="outlined"
-								value={title}
-								onChange={(event) => setTitle(event.target.value)}
-								type="text"
-								placeholder="Enter the record title"
->>>>>>> 0f3529c09c8333b2a5949f5763f173244939893e
 								required
 							/>
 						</FormGroup>
 						<FormGroup>
 							<TextField
 								id="outlined-basic"
-<<<<<<< HEAD
 								label="title"
 								variant="outlined"
 								value={title}
 								onChange={(event) => setTitle(event.target.value)}
 								type="text"
 								placeholder="Enter the record title"
-=======
-								label="artist"
-								variant="outlined"
-								value={artist}
-								onChange={(event) => setArtist(event.target.value)}
-								type="text"
-								placeholder="Enter the artist"
->>>>>>> 0f3529c09c8333b2a5949f5763f173244939893e
 								required
 							/>
 						</FormGroup>
@@ -132,17 +104,11 @@ const AddRecords = (props) => {
 							Search again by title &/or artist
 						</Button>
 					</form>
-<<<<<<< HEAD
 					{searchedAgain ? (
 						<Link to="/manualadd">
 							<Button variant="outlined">Still not found?</Button>
 						</Link>
 					) : null}
-=======
-					<Link to="/manualadd">
-						<Button variant="outlined">Click to add info manually</Button>
-					</Link>
->>>>>>> 0f3529c09c8333b2a5949f5763f173244939893e
 					<Link to="/addrecords">
 						<Button variant="outlined" onClick={clearSuggestion}>
 							Click here to retake picture
