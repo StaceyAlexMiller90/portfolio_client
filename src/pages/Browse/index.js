@@ -27,7 +27,7 @@ const Browse = () => {
 		} else {
 			dispatch(fetchUserRecords())
 		}
-	}, [token, history])
+	}, [token])
 
 	const getSelectOptions = (option) => {
 		const options = records.flatMap((record) => {

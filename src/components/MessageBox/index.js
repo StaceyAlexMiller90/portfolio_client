@@ -25,9 +25,8 @@ export default function MessageBox() {
 	return (
 		<div className={classes.root}>
 			<Alert
-				// show={showMessage}
 				severity={message.variant}
-				onClose={message.dismissable ? () => dispatch(clearMessage()) : null}
+				onClose={() => dispatch(clearMessage())}
 			>
 				{message.text}
 			</Alert>

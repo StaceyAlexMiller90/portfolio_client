@@ -8,22 +8,45 @@ import { clearSuggestionInfo } from '../../store/suggestion/actions'
 import SearchResults from '../SearchResults'
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
+import { getSuggestions } from '../../store/suggestion/actions'
+import TextField from '@material-ui/core/TextField'
+import { makeStyles } from '@material-ui/core/styles'
+import { FormGroup } from '@material-ui/core'
+import Container from '@material-ui/core/Container'
 
-const AddRecords = () => {
+const useStyles = makeStyles((theme) => ({
+	root: {
+		'& > *': {
+			margin: theme.spacing(1),
+			width: '40ch',
+		},
+	},
+}))
+
+const AddRecords = (props) => {
+	const classes = useStyles()
 	const dispatch = useDispatch()
 	const token = useSelector(selectToken)
 	const history = useHistory()
 	const suggestions = useSelector(selectSuggestions)
+	const [title, setTitle] = useState('')
+	const [artist, setArtist] = useState('')
+	const pageKey = props.location.key
 
 	const clearSuggestion = () => {
 		dispatch(clearSuggestionInfo())
+	}
+
+	const searchAgain = () => {
+		dispatch(getSuggestions(suggestions.uploadImage, title, artist))
 	}
 
 	useEffect(() => {
 		if (!token) {
 			history.push('/')
 		}
-	}, [token, history])
+		clearSuggestion()
+	}, [token, history, pageKey])
 
 	return (
 		<div
@@ -51,6 +74,35 @@ const AddRecords = () => {
 						Please select the option that best matches your record, or decide to
 						add info manually
 					</h5>
+					<form className={classes.root}>
+						<FormGroup>
+							<TextField
+								id="outlined-basic"
+								label="title"
+								variant="outlined"
+								value={title}
+								onChange={(event) => setTitle(event.target.value)}
+								type="text"
+								placeholder="Enter the record title"
+								required
+							/>
+						</FormGroup>
+						<FormGroup>
+							<TextField
+								id="outlined-basic"
+								label="artist"
+								variant="outlined"
+								value={artist}
+								onChange={(event) => setArtist(event.target.value)}
+								type="text"
+								placeholder="Enter the artist"
+								required
+							/>
+						</FormGroup>
+						<Button variant="outlined" onClick={searchAgain}>
+							Search again by title &/or artist
+						</Button>
+					</form>
 					<Link to="/manualadd">
 						<Button variant="outlined">Click to add info manually</Button>
 					</Link>
