@@ -8,6 +8,20 @@
 	grid-gap: 1rem;
 }
 
+.bigJohn-quote {
+	padding: 20px;
+	font-family: bigJohn;
+	font-size: 2rem;
+	color: white;
+}
+
+.slimJoe-quote {
+	padding: 20px;
+	font-family: slimJoe;
+	font-size: 2rem;
+	color: white;
+}
+
 .whitenumber {
 	margin: 0;
 	font-size: 3rem;
@@ -25,7 +39,17 @@
 	color: white;
 }
 
+.price {
+	margin: 0;
+	padding: 5px;
+	font-size: 1.5rem;
+	font-family: bigJohn;
+	align-self: center;
+	color: white;
+}
+
 .layout1 .box1 {
+	place-items: center;
 	background-color: #5333ed;
 	grid-column-start: 1;
 	grid-column-end: 3;
