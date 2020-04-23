@@ -27,9 +27,9 @@ const ManualAddRecord = () => {
 		artist: null,
 		genre: null,
 		style: null,
-		format: null,
+		format: 'Vinyl',
 		lowestPrice: 0,
-		year: null,
+		year: 2020,
 		imageUrl: suggestions.uploadImage,
 	})
 
@@ -39,7 +39,14 @@ const ManualAddRecord = () => {
 	const history = useHistory()
 
 	const addRecord = () => {
-		dispatch(addARecord(record))
+		dispatch(
+			addARecord({
+				...record,
+				genre: record.genre.split(/[ ,]+/).join(' | '),
+				style: record.genre.split(/[ ,]+/).join(' | '),
+			})
+		)
+		history.push('/browse')
 	}
 
 	if (!token) {
@@ -47,47 +54,115 @@ const ManualAddRecord = () => {
 	}
 
 	return (
-		<Container maxWidth="sm">
-			<form className={classes.root}>
-				<h1 className="mt-5 mb-5">Login</h1>
-				<FormGroup>
-					<TextField
-						id="outlined-basic"
-						label="title"
-						variant="outlined"
-						value={record.title}
-						onChange={(event) =>
-							setRecord({ ...record, title: event.target.value })
-						}
-						type="text"
-						placeholder="Enter the record title"
-						required
-					/>
-				</FormGroup>
-				<FormGroup>
-					<TextField
-						id="outlined-basic"
-						label="artist"
-						variant="outlined"
-						value={record.artist}
-						onChange={(event) =>
-							setRecord({ ...record, artist: event.target.value })
-						}
-						type="text"
-						placeholder="Enter the artist"
-						required
-					/>
-				</FormGroup>
-				<FormGroup>
-					<Button variant="outlined" type="submit" onClick={addRecord}>
-						Add record
-					</Button>
-				</FormGroup>
-				<Link to="/signup" style={{ color: 'black' }}>
-					Click here to sign up
-				</Link>
-			</form>
-		</Container>
+		<>
+			<img
+				src={suggestions.uploadImage}
+				alt="User Upload"
+				style={{ width: '100px' }}
+			></img>
+			<Container maxWidth="sm">
+				<form className={classes.root}>
+					<h1 className="mt-5 mb-5">Manually add your record</h1>
+					<FormGroup>
+						<TextField
+							id="outlined-basic"
+							label="title"
+							variant="outlined"
+							value={record.title}
+							onChange={(event) =>
+								setRecord({ ...record, title: event.target.value })
+							}
+							type="text"
+							placeholder="Enter the record title"
+							required
+						/>
+					</FormGroup>
+					<FormGroup>
+						<TextField
+							id="outlined-basic"
+							label="artist"
+							variant="outlined"
+							value={record.artist}
+							onChange={(event) =>
+								setRecord({ ...record, artist: event.target.value })
+							}
+							type="text"
+							placeholder="Enter the artist"
+							required
+						/>
+					</FormGroup>
+					<FormGroup>
+						<TextField
+							id="outlined-basic"
+							label="genre(s)"
+							variant="outlined"
+							value={record.genre}
+							onChange={(event) =>
+								setRecord({
+									...record,
+									genre: event.target.value,
+								})
+							}
+							type="text"
+							placeholder="Enter the genre(s) separated by spaces &/or commas"
+							required
+						/>
+					</FormGroup>
+					<FormGroup>
+						<TextField
+							id="outlined-basic"
+							label="style(s)"
+							variant="outlined"
+							value={record.style}
+							onChange={(event) =>
+								setRecord({
+									...record,
+									style: event.target.value,
+								})
+							}
+							type="text"
+							placeholder="Enter the style(s) separated by spaces &/or commas"
+							required
+						/>
+					</FormGroup>
+					<FormGroup>
+						<TextField
+							error={record.year.length === 4 ? false : true}
+							helperText="must be in YYYY format"
+							id="outlined-basic"
+							label="year"
+							variant="outlined"
+							value={record.year}
+							onChange={(event) =>
+								setRecord({ ...record, year: event.target.value })
+							}
+							type="number"
+							placeholder="Enter the year"
+							required
+						/>
+					</FormGroup>
+					<FormGroup>
+						<TextField
+							id="outlined-basic"
+							label="lowest price"
+							variant="outlined"
+							helperText="if this field is left blank we will record 0"
+							value={record.lowestPrice}
+							onChange={(event) =>
+								setRecord({ ...record, lowestPrice: event.target.value })
+							}
+							type="number"
+							placeholder="Enter the lowest price for this record"
+						/>
+					</FormGroup>
+					<FormGroup>
+						<Button variant="outlined" type="submit" onClick={addRecord}>
+							Add record
+						</Button>
+					</FormGroup>
+				</form>
+			</Container>
+		</>
 	)
 }
 

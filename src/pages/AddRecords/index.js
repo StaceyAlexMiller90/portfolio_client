@@ -12,7 +12,6 @@ import { getSuggestions } from '../../store/suggestion/actions'
 import TextField from '@material-ui/core/TextField'
 import { makeStyles } from '@material-ui/core/styles'
 import { FormGroup } from '@material-ui/core'
-import Container from '@material-ui/core/Container'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -31,6 +30,7 @@ const AddRecords = (props) => {
 	const suggestions = useSelector(selectSuggestions)
 	const [title, setTitle] = useState('')
 	const [artist, setArtist] = useState('')
+	const [searchedAgain, setSearchedAgain] = useState(false)
 	const pageKey = props.location.key
 
 	const clearSuggestion = () => {
@@ -39,6 +39,7 @@ const AddRecords = (props) => {
 
 	const searchAgain = () => {
 		dispatch(getSuggestions(suggestions.uploadImage, title, artist))
+		setSearchedAgain(true)
 	}
 
 	useEffect(() => {
@@ -78,18 +79,6 @@ const AddRecords = (props) => {
 						<FormGroup>
 							<TextField
 								id="outlined-basic"
-								label="title"
-								variant="outlined"
-								value={title}
-								onChange={(event) => setTitle(event.target.value)}
-								type="text"
-								placeholder="Enter the record title"
-								required
-							/>
-						</FormGroup>
-						<FormGroup>
-							<TextField
-								id="outlined-basic"
 								label="artist"
 								variant="outlined"
 								value={artist}
@@ -99,13 +88,27 @@ const AddRecords = (props) => {
 								required
 							/>
 						</FormGroup>
+						<FormGroup>
+							<TextField
+								id="outlined-basic"
+								label="title"
+								variant="outlined"
+								value={title}
+								onChange={(event) => setTitle(event.target.value)}
+								type="text"
+								placeholder="Enter the record title"
+								required
+							/>
+						</FormGroup>
 						<Button variant="outlined" onClick={searchAgain}>
 							Search again by title &/or artist
 						</Button>
 					</form>
-					<Link to="/manualadd">
-						<Button variant="outlined">Click to add info manually</Button>
-					</Link>
+					{searchedAgain ? (
+						<Link to="/manualadd">
+							<Button variant="outlined">Still not found?</Button>
+						</Link>
+					) : null}
 					<Link to="/addrecords">
 						<Button variant="outlined" onClick={clearSuggestion}>
 							Click here to retake picture
