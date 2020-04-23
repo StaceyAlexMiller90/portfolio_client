@@ -6,6 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import Chip from '@material-ui/core/Chip'
+import transitions from '@material-ui/core/styles/transitions'
 
 const useStyles = makeStyles((theme) => ({
 	formControl: {
@@ -16,9 +17,6 @@ const useStyles = makeStyles((theme) => ({
 	chips: {
 		display: 'flex',
 		flexWrap: 'wrap',
-	},
-	chip: {
-		margin: 2,
 	},
 	noLabel: {
 		marginTop: theme.spacing(3),
@@ -49,7 +47,6 @@ const MultipleSelect = (props) => {
 	const options = props.options
 	const label = props.label
 	const classes = useStyles()
-	const theme = useTheme()
 
 	const [filter, setFilter] = useState([])
 
@@ -60,8 +57,16 @@ const MultipleSelect = (props) => {
 
 	return (
 		<FormControl className={classes.formControl}>
-			<InputLabel id="demo-mutiple-chip-label">{label}</InputLabel>
+			<InputLabel
+				style={{ fontFamily: 'regularJohn', textTransform: 'uppercase' }}
+				id="demo-mutiple-chip-label"
+			>
+				{label}
+			</InputLabel>
 			<Select
+				style={{
+					fontFamily: 'bigJohn',
+				}}
 				labelId="demo-mutiple-chip-label"
 				id="demo-mutiple-chip"
 				multiple
@@ -71,7 +76,16 @@ const MultipleSelect = (props) => {
 				renderValue={(selected) => (
 					<div className={classes.chips}>
 						{selected.map((value) => (
-							<Chip key={value} label={value} className={classes.chip} />
+							<Chip
+								className={classes.chip}
+								key={value}
+								label={value}
+								style={{
+									fontFamily: 'regularJohn',
+									textTransform: 'uppercase',
+									margin: '2px',
+								}}
+							/>
 						))}
 					</div>
 				)}
@@ -81,7 +95,11 @@ const MultipleSelect = (props) => {
 					<MenuItem
 						key={option}
 						value={option}
-						style={getStyles(option, filter, theme)}
+						style={{
+							fontFamily: 'regularJohn',
+							textTransform: 'uppercase',
+							fontSize: '.8rem',
+						}}
 					>
 						{option}
 					</MenuItem>

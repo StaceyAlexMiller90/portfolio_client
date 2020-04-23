@@ -1,0 +1,147 @@
+.container {
+	margin: 15px;
+	padding: 3rem;
+	height: 70vh;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+	grid-gap: 1rem;
+}
+
+.whitenumber {
+	margin: 0;
+	font-size: 3rem;
+	font-family: bigJohn;
+	align-self: center;
+	color: white;
+}
+
+.whitetext {
+	margin: 0;
+	padding-left: 5px;
+	align-self: center;
+	font-family: regularJohn;
+	text-transform: uppercase;
+	color: white;
+}
+
+.layout1 .box1 {
+	background-color: #5333ed;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 5;
+}
+
+.layout1 .box2 {
+	border: solid black 2px;
+	grid-column-start: 3;
+	grid-column-end: 5;
+	grid-row-start: 1;
+	grid-row-end: 3;
+}
+
+.layout1 .box3 {
+	border: solid #ffdd00 3px;
+	grid-column-start: 3;
+	grid-column-end: 5;
+	grid-row-start: 3;
+	grid-row-end: 5;
+}
+
+.layout1 .box4 {
+	font-family: bigJohn;
+	padding: 10px;
+	margin: 0;
+	border: solid #ff0055 3px;
+	grid-column-start: 5;
+	grid-column-end: 7;
+	grid-row-start: 1;
+	grid-row-end: 2;
+}
+
+.layout1 .box5 {
+	display: flex;
+	padding: 2px;
+	background-color: #ff0055;
+	grid-column-start: 5;
+	grid-column-end: 7;
+	grid-row-start: 2;
+	grid-row-end: 3;
+}
+
+.layout1 .box6 {
+	display: flex;
+	padding: 2px;
+	background-color: #ff0055;
+	grid-column-start: 5;
+	grid-column-end: 7;
+	grid-row-start: 3;
+	grid-row-end: 4;
+}
+
+.layout1 .box7 {
+	display: flex;
+	padding: 2px;
+	background-color: #ff0055;
+	grid-column-start: 5;
+	grid-column-end: 7;
+	grid-row-start: 4;
+	grid-row-end: 5;
+}
+
+.layout2 .box1 {
+	background-color: #ff0055;
+	grid-column-start: 5;
+	grid-column-end: 7;
+	grid-row-start: 1;
+	grid-row-end: 3;
+}
+
+.layout2 .box2 {
+	background-color: brown;
+	grid-column-start: 3;
+	grid-column-end: 5;
+	grid-row-start: 3;
+	grid-row-end: 5;
+}
+
+.layout2 .box3 {
+	background-color: brown;
+	grid-column-start: 5;
+	grid-column-end: 7;
+	grid-row-start: 3;
+	grid-row-end: 5;
+}
+
+.layout2 .box4 {
+	background-color: brown;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 2;
+}
+
+.layout2 .box5 {
+	background-color: brown;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 2;
+	grid-row-end: 3;
+}
+
+.layout2 .box6 {
+	background-color: brown;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 3;
+	grid-row-end: 4;
+}
+
+.layout2 .box7 {
+	background-color: brown;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 4;
+	grid-row-end: 5;
+}

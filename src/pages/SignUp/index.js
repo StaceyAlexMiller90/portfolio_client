@@ -46,7 +46,7 @@ export default function SignUp() {
 	return (
 		<Container maxWidth="sm">
 			<form className={classes.root}>
-				<h1 className="mt-5 mb-5">Signup</h1>
+				<h1>Signup</h1>
 				<FormGroup>
 					<TextField
 						id="outlined-basic"

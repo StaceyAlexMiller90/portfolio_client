@@ -92,7 +92,11 @@ const Browse = () => {
 				}}
 			>
 				<TextField
-					style={{ marginRight: '3rem' }}
+					style={{
+						fontFamily: 'regularJohn',
+						textTransform: 'uppercase',
+						marginRight: '3rem',
+					}}
 					placeholder="search by title"
 					id="outlined-basic"
 					label="Title Search"

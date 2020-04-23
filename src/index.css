@@ -1,10 +1,22 @@
 body {
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-		sans-serif;
+	font-family: 'Quicksand', sans-serif;
+	/* font-family: 'regularJohn'; */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3 {
+	font-family: 'regularJohn';
+	text-transform: uppercase;
+}
+
+h4,
+h5,
+h6 {
+	font-family: 'slimJoe';
 }
 
 code {
@@ -27,3 +39,21 @@ code {
 	font-weight: normal;
 	font-style: normal;
 }
+
+@font-face {
+	font-family: 'regularJohn';
+	src: url('./fonts/bigjohnpro-regular-webfont.woff2') format('woff2'),
+		url('./fonts/bigjohnpro-regular-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'slimJoeLower';
+	src: url('./fonts/bigjohnpro-light-webfont.woff2') format('woff2'),
+		url('./fonts/bigjohnpro-light-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
