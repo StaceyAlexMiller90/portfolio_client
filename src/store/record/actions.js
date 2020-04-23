@@ -8,6 +8,8 @@ import {
 	showMessageWithTimeout,
 	setMessage,
 } from '../appState/actions'
+import { clearSuggestionInfo } from '../suggestion/actions'
+import { selectSuggestions } from '../suggestion/selectors'
 
 const userRecordsFetched = (data) => {
 	return {
@@ -52,9 +54,12 @@ export const addARecord = (record) => {
 				},
 			})
 			dispatch(addedRecord(response.data.newRecord))
-			dispatch(showMessageWithTimeout('success', true, response.data.message))
+			// const suggestionInfo = getState(selectSuggestions)
+
+			dispatch(showMessageWithTimeout('success', response.data.message))
 		} catch (e) {
 			console.log(e.message)
+			dispatch(setMessage('error', e.response.data.message))
 		}
 		dispatch(appDoneLoading())
 	}
@@ -72,7 +77,7 @@ export const removeUserRecord = (recordId) => {
 				data: { recordId },
 			})
 			dispatch(fetchUserRecords())
-			dispatch(showMessageWithTimeout('success', true, response.data.message))
+			dispatch(showMessageWithTimeout('success', response.data.message))
 			dispatch(appDoneLoading())
 		} catch (e) {
 			console.log(e.message)
