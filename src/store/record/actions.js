@@ -46,6 +46,7 @@ const addedRecord = (record) => {
 export const addARecord = (record) => {
 	return async (dispatch, getState) => {
 		const token = selectToken(getState())
+		console.log(record)
 		dispatch(appLoading())
 		try {
 			const response = await axios.post(`${apiUrl}/records`, record, {
@@ -54,12 +55,10 @@ export const addARecord = (record) => {
 				},
 			})
 			dispatch(addedRecord(response.data.newRecord))
-			// const suggestionInfo = getState(selectSuggestions)
-
 			dispatch(showMessageWithTimeout('success', response.data.message))
 		} catch (e) {
 			console.log(e.message)
-			dispatch(setMessage('error', e.response.data.message))
+			dispatch(showMessageWithTimeout('error', e.response.data.message))
 		}
 		dispatch(appDoneLoading())
 	}

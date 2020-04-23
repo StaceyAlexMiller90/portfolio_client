@@ -5,14 +5,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import RecordCard from '../../components/RecordCard'
 import { selectToken } from '../../store/user/selectors'
 import { useHistory } from 'react-router-dom'
+import { selectSuggestions } from '../../store/suggestion/selectors'
 
 const SearchResults = (props) => {
 	const token = useSelector(selectToken)
 	const history = useHistory()
-	const keywords = props.suggestions.suggestion
-	const results = props.suggestions.data
+	const suggestions = useSelector(selectSuggestions)
+	const keywords = suggestions.suggestion
+	const results = suggestions.data
 
-	if (!props.suggestions) {
+	if (!suggestions) {
 		return <Loading />
 	}
 	if (token === null) {
@@ -26,7 +28,7 @@ const SearchResults = (props) => {
 			<img
 				alt="User Upload"
 				style={{ width: '100px' }}
-				src={props.recordUrl}
+				src={suggestions.uploadImage}
 			></img>
 			<p>Search results:</p>
 			<div style={{ marginLeft: '100px' }}>
