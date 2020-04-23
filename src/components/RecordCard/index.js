@@ -12,6 +12,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 import { addARecord } from '../../store/record/actions'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
+import { useHistory, Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
 	root: {
@@ -21,6 +22,8 @@ const useStyles = makeStyles({
 
 const RecordCard = (props) => {
 	const classes = useStyles()
+	const history = useHistory()
+
 	const {
 		id,
 		title,
@@ -52,6 +55,7 @@ const RecordCard = (props) => {
 				imageUrl,
 			})
 		)
+		history.push('/browse')
 	}
 
 	return (

@@ -19,14 +19,14 @@ const sendSuggestions = (data) => {
 	}
 }
 
-export const getSuggestions = (imageUrl) => {
+export const getSuggestions = (imageUrl, title, artist) => {
 	return async (dispatch, getState) => {
 		const token = selectToken(getState())
 		dispatch(appLoading())
 		try {
 			const response = await axios.post(
 				`${apiUrl}/suggestion`,
-				{ imageUrl },
+				{ imageUrl, title, artist },
 				{
 					headers: {
 						Authorization: `Bearer ${token}`,
@@ -38,7 +38,7 @@ export const getSuggestions = (imageUrl) => {
 		} catch (e) {
 			if (e.response) {
 				console.log(e.response.data.message)
-				dispatch(setMessage('error', e.response.data.message))
+				dispatch(showMessageWithTimeout('error', e.response.data.message))
 			} else {
 				console.log(e.message)
 				dispatch(setMessage('error', e.message))
