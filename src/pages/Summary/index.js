@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { selectToken } from '../../store/user/selectors'
 import { selectAllUserRecords } from '../../store/record/selectors'
 import { fetchUserRecords } from '../../store/record/actions'
+import { getSelectOptions } from '../../functions'
 import Loading from '../../components/Loading'
 import './SummaryPage.css'
 
@@ -34,9 +35,22 @@ const Summary = () => {
 		Math,
 		records.map((record) => record.year)
 	)
-	// const genres = {}
-	// const genreCounter = records.flatMap((record) => record.genre)
-	// console.log(genreCounter)
+
+	const genres = records.flatMap((record) => record.genre.split(' | '))
+
+	const aCount = new Map(
+		[...new Set(genres)].map((x) => [x, genres.filter((y) => y === x).length])
+	)
+
+	const countedGenres = genres
+		.map((genre) => {
+			return {
+				genre: genre,
+				count: aCount.get(genre),
+			}
+		})
+		.filter((v, i, a) => a.findIndex((t) => t.genre === v.genre) === i)
+		.sort((a, b) => b.count - a.count)
 
 	return (
 		<div className="container layout1">
@@ -44,12 +58,33 @@ const Summary = () => {
 				<p className="bigJohn-quote">"Time you enjoy wasting, is not wasted"</p>
 				<span className="slimJoe-quote">John Lennon</span>
 			</div>
-			<div className="box2"></div>
-			<div className="box3">
-				<p style={{ fontSize: '1.2rem' }}>
-					Wipe off that dust, your oldest record is from...
+			<div className="box2">
+				<p style={{ fontFamily: 'bigJohn', fontSize: '1.5rem' }}>
+					You really seem to like
 				</p>
-				<p style={{ fontSize: '1.5rem', color: '#ff0055' }}>{oldestYear}</p>
+				<div
+					style={{
+						fontFamily: 'regularJohn',
+						fontSize: '2rem',
+					}}
+				>
+					<p>{countedGenres[0].genre}</p>
+					<p>{countedGenres[1].genre}</p>
+					<p>{countedGenres[2].genre}</p>
+				</div>
+			</div>
+			<div className="box3">
+				<p style={{ fontSize: '1.5rem' }}>Wipe off that dust </p>
+				<p style={{ fontSize: '1rem' }}>your oldest record is from...</p>
+				<p
+					style={{
+						fontSize: '2.5rem',
+						backgroundColor: '#ffdd00',
+						color: 'black',
+					}}
+				>
+					{oldestYear}
+				</p>
 			</div>
 			<div className="box4">
 				<p style={{ fontSize: '1.2rem' }}>If you really need the cash....</p>

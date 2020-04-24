@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { selectToken } from '../../store/user/selectors'
 import { selectAllUserRecords } from '../../store/record/selectors'
+import { getSelectOptions } from '../../functions'
 import Loading from '../../components/Loading'
 import RecordCard from '../../components/RecordCard'
 import '../../components/RecordCard/RecordCard.css'
@@ -25,21 +26,18 @@ const Browse = () => {
 		dispatch(fetchUserRecords())
 	}, [])
 
-	const getSelectOptions = (option) => {
-		const options = records.flatMap((record) => {
-			if (record[option].length > 1) {
-				return record[option].split(' | ')
-			} else {
-				return record[option]
-			}
-		})
-		return [...new Set(options)]
+	if (!token) {
+		history.push('/')
+	}
+	if (!records) {
+		return <Loading />
 	}
 
-	const genreArray = getSelectOptions('genre')
-	const styleArray = getSelectOptions('style')
-	const yearArray = getSelectOptions('year')
-	const artistArray = getSelectOptions('artist')
+	const getOptionsRecords = getSelectOptions(records)
+	const genreArray = getOptionsRecords('genre')
+	const styleArray = getOptionsRecords('style')
+	const yearArray = getOptionsRecords('year')
+	const artistArray = getOptionsRecords('artist')
 
 	const updateFilter = (key, selection) => {
 		if (key === 'genre') {
@@ -72,13 +70,6 @@ const Browse = () => {
 		}
 		return false
 	})
-
-	if (!token) {
-		history.push('/')
-	}
-	if (!records) {
-		return <Loading />
-	}
 
 	return (
 		<>

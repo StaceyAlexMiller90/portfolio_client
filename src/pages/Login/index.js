@@ -42,9 +42,9 @@ export default function SignUp() {
 	}
 
 	return (
-		<Container maxWidth="sm">
+		<Container maxWidth="sm" style={{ paddingTop: '3rem' }}>
 			<form className={classes.root}>
-				<h1 className="mt-5 mb-5">Login</h1>
+				<h1>Login</h1>
 				<FormGroup>
 					<TextField
 						id="outlined-basic"
