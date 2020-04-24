@@ -57,8 +57,8 @@ const AddRecords = (props) => {
 		>
 			{!suggestions.suggestion ? (
 				<div>
-					<h4>Add records to your collection!</h4>
-					<h5>Take a quick pic & we do the hard work for you!</h5>
+					<h3>Add records to your collection</h3>
+					<h5>Take a quick pic & we do the hard work for you</h5>
 					<p>
 						This feature uses image recognition technology - once uploaded, your
 						image will be scanned for text & matching articles on the web & the

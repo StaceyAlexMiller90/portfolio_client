@@ -1,0 +1,41 @@
+.body {
+	margin: 15px;
+	padding: 3rem;
+	height: 70vh;
+	background-color: #5333ed;
+}
+
+.bigJohn {
+	font-family: bigJohn;
+	color: #5333ed;
+}
+
+.slimJoe {
+	font-family: slimJoe;
+}
+
+.emptext {
+	font-size: 2rem;
+	padding-left: 2rem;
+	font-family: slimJoe;
+}
+
+.header {
+	font-family: bigJohn;
+	color: white;
+	font-size: 1.5rem;
+}
+
+.textbox {
+	margin: 2rem;
+	margin-top: 2rem;
+	background-color: white;
+	height: 50vh;
+}
+
+.text {
+	padding: 2rem;
+	font-family: 'regularJohn';
+	text-transform: uppercase;
+	color: black;
+}

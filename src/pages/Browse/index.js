@@ -22,12 +22,8 @@ const Browse = () => {
 	const [title, setTitle] = useState('')
 
 	useEffect(() => {
-		if (!token) {
-			history.push('/')
-		} else {
-			dispatch(fetchUserRecords())
-		}
-	}, [token])
+		dispatch(fetchUserRecords())
+	}, [])
 
 	const getSelectOptions = (option) => {
 		const options = records.flatMap((record) => {
@@ -77,6 +73,9 @@ const Browse = () => {
 		return false
 	})
 
+	if (!token) {
+		history.push('/')
+	}
 	if (!records) {
 		return <Loading />
 	}
@@ -92,7 +91,11 @@ const Browse = () => {
 				}}
 			>
 				<TextField
-					style={{ marginRight: '3rem' }}
+					style={{
+						fontFamily: 'regularJohn',
+						textTransform: 'uppercase',
+						marginRight: '3rem',
+					}}
 					placeholder="search by title"
 					id="outlined-basic"
 					label="Title Search"

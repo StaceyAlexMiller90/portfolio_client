@@ -15,6 +15,15 @@
 	justify-self: flex-start;
 }
 
+.record {
+	font-family: 'bigJohn';
+}
+
+.nise {
+	font-family: 'slimJoe';
+	animation: slideInFromLeft 3s ease-in;
+}
+
 .NavLinks {
 	display: flex;
 	place-items: flex-end;
@@ -34,12 +43,15 @@
 	top: 0.8rem;
 	right: 1rem;
 	font-size: 1rem;
-	padding: 27px 15px;
+	padding: 15px 15px;
+	margin-bottom: 12px;
 	animation: slideInFromLeft 0.5s ease-in;
 }
 
 .activeNavItem {
 	font-family: bigJohn;
+	color: white;
+	background-color: #5333ed;
 }
 
 @keyframes slideInFromLeft {

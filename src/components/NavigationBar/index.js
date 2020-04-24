@@ -15,8 +15,8 @@ export default function NavigationBar() {
 	return (
 		<div className="NavBar">
 			<Link className="logo" exact to="/">
-				<span style={{ fontFamily: 'bigJohn' }}>Record</span>
-				<span style={{ fontFamily: 'slimJoe' }}>nise</span>
+				<span className="record">Record</span>
+				<span className="nise">nise</span>
 			</Link>
 			{open ? (
 				<div className="NavLinks">
