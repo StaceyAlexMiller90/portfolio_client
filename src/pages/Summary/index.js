@@ -2,20 +2,24 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { selectToken } from '../../store/user/selectors'
-import { selectAllUserRecords } from '../../store/record/selectors'
-import { fetchUserRecords } from '../../store/record/actions'
-import { getSelectOptions } from '../../functions'
+import {
+	selectUserRecords,
+	selectCountOfUserRecords,
+} from '../../store/record/selectors'
+import { fetchPageUserRecords } from '../../store/record/actions'
 import Loading from '../../components/Loading'
+
 import './SummaryPage.css'
 
 const Summary = () => {
 	const dispatch = useDispatch()
 	const history = useHistory()
 	const token = useSelector(selectToken)
-	const records = useSelector(selectAllUserRecords)
+	const records = useSelector(selectUserRecords)
+	const count = useSelector(selectCountOfUserRecords)
 
 	useEffect(() => {
-		dispatch(fetchUserRecords())
+		dispatch(fetchPageUserRecords(records.length, count))
 	}, [])
 
 	if (!records || records.length === 0) {

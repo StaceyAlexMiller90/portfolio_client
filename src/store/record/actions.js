@@ -13,22 +13,30 @@ import { selectSuggestions } from '../suggestion/selectors'
 
 const userRecordsFetched = (data) => {
 	return {
-		type: 'FETCHED_USER_RECORDS_SUCCESS',
+		type: 'FETCHED_PAGE_USER_RECORDS_SUCCESS',
 		payload: data,
 	}
 }
 
-export const fetchUserRecords = () => {
+export const fetchPageUserRecords = (offset, limit) => {
 	return async (dispatch, getState) => {
 		const token = selectToken(getState())
 		dispatch(appLoading())
 		try {
-			const response = await axios.get(`${apiUrl}/records`, {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			})
-			dispatch(userRecordsFetched(response.data))
+			const response = await axios.get(
+				`${apiUrl}/records?limit=${limit}&offset=${offset}`,
+				{
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				}
+			)
+			dispatch(
+				userRecordsFetched({
+					count: response.data.count,
+					records: response.data.records,
+				})
+			)
 			dispatch(appDoneLoading())
 		} catch (e) {
 			console.log(e.message)
@@ -75,7 +83,7 @@ export const removeUserRecord = (recordId) => {
 				},
 				data: { recordId },
 			})
-			dispatch(fetchUserRecords())
+			dispatch(fetchPageUserRecords())
 			dispatch(showMessageWithTimeout('success', response.data.message))
 			dispatch(appDoneLoading())
 		} catch (e) {

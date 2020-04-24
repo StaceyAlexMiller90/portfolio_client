@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from 'react'
-import { fetchUserRecords } from '../../store/record/actions'
+import { fetchPageUserRecords } from '../../store/record/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { selectToken } from '../../store/user/selectors'
-import { selectAllUserRecords } from '../../store/record/selectors'
+import {
+	selectUserRecords,
+	selectCountOfUserRecords,
+} from '../../store/record/selectors'
 import { getSelectOptions } from '../../functions'
 import Loading from '../../components/Loading'
 import RecordCard from '../../components/RecordCard'
 import '../../components/RecordCard/RecordCard.css'
 import TextField from '@material-ui/core/TextField'
 import MultipleSelect from '../../components/MultipleSelect'
+import Button from '@material-ui/core/Button'
+import PaginationSelect from '../../components/PaginationSelect'
 
 const Browse = () => {
 	const dispatch = useDispatch()
 	const token = useSelector(selectToken)
 	const history = useHistory()
-	const records = useSelector(selectAllUserRecords)
+	const records = useSelector(selectUserRecords)
+	const count = useSelector(selectCountOfUserRecords)
 	const [genre, setGenre] = useState([])
 	const [style, setStyle] = useState([])
 	const [year, setYear] = useState([])
@@ -23,7 +29,9 @@ const Browse = () => {
 	const [title, setTitle] = useState('')
 
 	useEffect(() => {
-		dispatch(fetchUserRecords())
+		if (records.length === 0) {
+			dispatch(fetchPageUserRecords(0, 4))
+		}
 	}, [])
 
 	if (!token) {
@@ -31,6 +39,10 @@ const Browse = () => {
 	}
 	if (!records) {
 		return <Loading />
+	}
+
+	const updatePagination = () => {
+		dispatch(fetchPageUserRecords(records.length, 10))
 	}
 
 	const getOptionsRecords = getSelectOptions(records)
@@ -119,24 +131,34 @@ const Browse = () => {
 			) : filteredRecords.length === 0 ? (
 				<p> No records match your filters </p>
 			) : (
-				<div className="record-container">
-					{filteredRecords.map((record) => {
-						return (
-							<RecordCard
-								key={record.id}
-								id={record.id}
-								title={record.title}
-								artist={record.artist}
-								year={record.year}
-								genre={record.genre}
-								style={record.style}
-								format={record.format}
-								lowestPrice={record.lowestPrice}
-								imageUrl={record.imageUrl}
-							/>
-						)
-					})}
-				</div>
+				<>
+					<p>
+						Displaying {filteredRecords.length} of {count} records on your shelf
+					</p>
+					<div className="record-container">
+						{filteredRecords.map((record) => {
+							return (
+								<RecordCard
+									key={record.id}
+									id={record.id}
+									title={record.title}
+									artist={record.artist}
+									year={record.year}
+									genre={record.genre}
+									style={record.style}
+									format={record.format}
+									lowestPrice={record.lowestPrice}
+									imageUrl={record.imageUrl}
+								/>
+							)
+						})}
+					</div>
+					{records.length < count ? (
+						<Button variant="outlined" onClick={updatePagination}>
+							Click to see more
+						</Button>
+					) : null}
+				</>
 			)}
 		</>
 	)

@@ -1,1 +1,2 @@
-export const selectAllUserRecords = state => state.record
+export const selectUserRecords = (state) => state.record.records
+export const selectCountOfUserRecords = (state) => state.record.count
