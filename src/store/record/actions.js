@@ -28,7 +28,6 @@ export const fetchUserRecords = () => {
 					Authorization: `Bearer ${token}`,
 				},
 			})
-			console.log(response)
 			dispatch(userRecordsFetched(response.data))
 			dispatch(appDoneLoading())
 		} catch (e) {
