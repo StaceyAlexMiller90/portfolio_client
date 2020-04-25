@@ -24,8 +24,6 @@ const Summary = () => {
 		}
 	}, [])
 
-	console.log(records)
-
 	if (!records || records.length === 0) {
 		return <Loading />
 	}
@@ -67,6 +65,12 @@ const Summary = () => {
 	return (
 		<div className="container layout1">
 			<div className="box1">
+				<p
+					className="bigJohn-quote"
+					style={{ fontSize: '1.2rem', marginBottom: '1rem' }}
+				>
+					You have {count} records in total on your shelf
+				</p>
 				<p className="bigJohn-quote">"Time you enjoy wasting, is not wasted"</p>
 				<span className="slimJoe-quote">John Lennon</span>
 			</div>
