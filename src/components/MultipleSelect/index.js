@@ -6,7 +6,6 @@ import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import Chip from '@material-ui/core/Chip'
-import transitions from '@material-ui/core/styles/transitions'
 
 const useStyles = makeStyles((theme) => ({
 	formControl: {
@@ -32,15 +31,6 @@ const MenuProps = {
 			width: 250,
 		},
 	},
-}
-
-const getStyles = (option, filter, theme) => {
-	return {
-		fontWeight:
-			filter.indexOf(option) === -1
-				? theme.typography.fontWeightRegular
-				: theme.typography.fontWeightMedium,
-	}
 }
 
 const MultipleSelect = (props) => {
