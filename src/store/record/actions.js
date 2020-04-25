@@ -13,12 +13,12 @@ import { selectSuggestions } from '../suggestion/selectors'
 
 const userRecordsFetched = (data) => {
 	return {
-		type: 'FETCHED_USER_RECORDS_SUCCESS',
+		type: 'FETCHED_PAGE_USER_RECORDS_SUCCESS',
 		payload: data,
 	}
 }
 
-export const fetchUserRecords = () => {
+export const fetchAllUserRecords = () => {
 	return async (dispatch, getState) => {
 		const token = selectToken(getState())
 		dispatch(appLoading())
@@ -28,7 +28,12 @@ export const fetchUserRecords = () => {
 					Authorization: `Bearer ${token}`,
 				},
 			})
-			dispatch(userRecordsFetched(response.data))
+			dispatch(
+				userRecordsFetched({
+					count: response.data.count,
+					records: response.data.records,
+				})
+			)
 			dispatch(appDoneLoading())
 		} catch (e) {
 			console.log(e.message)
@@ -64,6 +69,13 @@ export const addARecord = (record) => {
 	}
 }
 
+const removeUserRecordById = (id) => {
+	return {
+		type: 'USER_RECORD_DELETED_SUCCESS',
+		payload: id,
+	}
+}
+
 export const removeUserRecord = (recordId) => {
 	return async (dispatch, getState) => {
 		const token = selectToken(getState())
@@ -75,7 +87,7 @@ export const removeUserRecord = (recordId) => {
 				},
 				data: { recordId },
 			})
-			dispatch(fetchUserRecords())
+			dispatch(removeUserRecordById(recordId))
 			dispatch(showMessageWithTimeout('success', response.data.message))
 			dispatch(appDoneLoading())
 		} catch (e) {
