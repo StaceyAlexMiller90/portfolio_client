@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { imageUrl } from '../../config/constants'
 import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader'
-
 import { getSuggestions } from '../../store/suggestion/actions'
-import { Link } from 'react-router-dom'
 
 const UploadRecord = () => {
 	const dispatch = useDispatch()
@@ -33,14 +31,8 @@ const UploadRecord = () => {
 		dispatch(getSuggestions(secureUrl))
 		allFiles.forEach((f) => f.remove())
 	}
-	//res.cloudinary.com/staceycloudinarycloud/image/upload/v1587631606/records/xcw0zl1gbrifyvyvovaz.jpg
 
-	// navigator.mediaDevices.getUserMedia({
-	// 	video: { facingMode: 'user' },
-	// 	audio: false,
-	// })
-
-	https: return (
+	return (
 		<Dropzone
 			styles={{
 				dropzone: { width: '500px', height: '400px', marginTop: '50px' },
