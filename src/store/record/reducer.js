@@ -12,7 +12,18 @@ export default (state = initialState, action) => {
 			}
 
 		case 'RECORD_ADDED_SUCCESS':
-			return { ...state, records: [...state.records, action.payload] }
+			return {
+				...state,
+				count: (state.count += 1),
+				records: [action.payload, ...state.records],
+			}
+
+		case 'USER_RECORD_DELETED_SUCCESS':
+			return {
+				...state,
+				count: (state.count -= 1),
+				records: state.records.filter((record) => record.id !== action.payload),
+			}
 
 		default:
 			return state

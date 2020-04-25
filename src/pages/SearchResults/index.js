@@ -14,6 +14,8 @@ const SearchResults = (props) => {
 	const keywords = suggestions.suggestion
 	const results = suggestions.data
 
+	console.log(results)
+
 	if (!suggestions) {
 		return <Loading />
 	}

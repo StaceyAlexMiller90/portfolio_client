@@ -6,7 +6,7 @@ import {
 	selectUserRecords,
 	selectCountOfUserRecords,
 } from '../../store/record/selectors'
-import { fetchPageUserRecords } from '../../store/record/actions'
+import { fetchAllUserRecords } from '../../store/record/actions'
 import Loading from '../../components/Loading'
 
 import './SummaryPage.css'
@@ -19,8 +19,12 @@ const Summary = () => {
 	const count = useSelector(selectCountOfUserRecords)
 
 	useEffect(() => {
-		dispatch(fetchPageUserRecords(records.length, count))
+		if (records.length === 0) {
+			dispatch(fetchAllUserRecords())
+		}
 	}, [])
+
+	console.log(records)
 
 	if (!records || records.length === 0) {
 		return <Loading />
@@ -30,6 +34,10 @@ const Summary = () => {
 		history.push('/')
 	}
 	const sortedPrice = [...records].sort((a, b) => b.lowestPrice - a.lowestPrice)
+
+	const worthOne = sortedPrice.length >= 1 ? sortedPrice[0] : null
+	const worthTwo = sortedPrice.length >= 2 ? sortedPrice[1] : null
+	const worthThree = sortedPrice.length >= 3 ? sortedPrice[2] : null
 
 	const totalPrice = records
 		.map((record) => record.lowestPrice)
@@ -99,18 +107,26 @@ const Summary = () => {
 			</div>
 			<div className="box5">
 				<p className="whitenumber">1.</p>
-				<p className="price">{`€${sortedPrice[0].lowestPrice}`}</p>
-				<p className="whitetext">{`${sortedPrice[0].title} by ${sortedPrice[0].artist}`}</p>
+				<p className="price">{worthOne ? `€${worthOne.lowestPrice}` : '-'}</p>
+				<p className="whitetext">
+					{worthOne ? `${worthOne.title} by ${worthOne.artist}` : '-'}
+				</p>
 			</div>
 			<div className="box6">
 				<p className="whitenumber">2.</p>
-				<p className="price">{`€${sortedPrice[1].lowestPrice}`}</p>
-				<p className="whitetext">{`${sortedPrice[1].title} by ${sortedPrice[1].artist}`}</p>
+				<p className="price">{worthTwo ? `€${worthTwo.lowestPrice}` : '-'}</p>
+				<p className="whitetext">
+					{worthTwo ? `${worthTwo.title} by ${worthTwo.artist}` : '-'}
+				</p>
 			</div>
 			<div className="box7">
 				<p className="whitenumber">3.</p>
-				<p className="price">{`€${sortedPrice[2].lowestPrice}`}</p>
-				<p className="whitetext">{`${sortedPrice[2].title} by ${sortedPrice[2].artist}`}</p>
+				<p className="price">
+					{worthThree ? `€${worthThree.lowestPrice}` : '-'}
+				</p>
+				<p className="whitetext">
+					{worthThree ? `${worthThree.title} by ${worthThree.artist}` : '-'}
+				</p>
 			</div>
 		</div>
 	)

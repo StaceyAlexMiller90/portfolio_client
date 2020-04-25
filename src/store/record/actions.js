@@ -18,19 +18,16 @@ const userRecordsFetched = (data) => {
 	}
 }
 
-export const fetchPageUserRecords = (offset, limit) => {
+export const fetchAllUserRecords = () => {
 	return async (dispatch, getState) => {
 		const token = selectToken(getState())
 		dispatch(appLoading())
 		try {
-			const response = await axios.get(
-				`${apiUrl}/records?limit=${limit}&offset=${offset}`,
-				{
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				}
-			)
+			const response = await axios.get(`${apiUrl}/records`, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			})
 			dispatch(
 				userRecordsFetched({
 					count: response.data.count,
@@ -72,6 +69,13 @@ export const addARecord = (record) => {
 	}
 }
 
+const removeUserRecordById = (id) => {
+	return {
+		type: 'USER_RECORD_DELETED_SUCCESS',
+		payload: id,
+	}
+}
+
 export const removeUserRecord = (recordId) => {
 	return async (dispatch, getState) => {
 		const token = selectToken(getState())
@@ -83,7 +87,7 @@ export const removeUserRecord = (recordId) => {
 				},
 				data: { recordId },
 			})
-			dispatch(fetchPageUserRecords())
+			dispatch(removeUserRecordById(recordId))
 			dispatch(showMessageWithTimeout('success', response.data.message))
 			dispatch(appDoneLoading())
 		} catch (e) {

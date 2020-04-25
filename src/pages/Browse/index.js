@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { fetchPageUserRecords } from '../../store/record/actions'
+import { fetchAllUserRecords } from '../../store/record/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { selectToken } from '../../store/user/selectors'
@@ -14,7 +14,6 @@ import '../../components/RecordCard/RecordCard.css'
 import TextField from '@material-ui/core/TextField'
 import MultipleSelect from '../../components/MultipleSelect'
 import Button from '@material-ui/core/Button'
-import PaginationSelect from '../../components/PaginationSelect'
 
 const Browse = () => {
 	const dispatch = useDispatch()
@@ -30,7 +29,7 @@ const Browse = () => {
 
 	useEffect(() => {
 		if (records.length === 0) {
-			dispatch(fetchPageUserRecords(0, 4))
+			dispatch(fetchAllUserRecords())
 		}
 	}, [])
 
@@ -41,9 +40,9 @@ const Browse = () => {
 		return <Loading />
 	}
 
-	const updatePagination = () => {
-		dispatch(fetchPageUserRecords(records.length, 10))
-	}
+	// const updatePagination = () => {
+	// 	dispatch(fetchPageUserRecords(records.length, 10))
+	// }
 
 	const getOptionsRecords = getSelectOptions(records)
 	const genreArray = getOptionsRecords('genre')
@@ -153,11 +152,11 @@ const Browse = () => {
 							)
 						})}
 					</div>
-					{records.length < count ? (
+					{/* {records.length < count ? (
 						<Button variant="outlined" onClick={updatePagination}>
 							Click to see more
 						</Button>
-					) : null}
+					) : null} */}
 				</>
 			)}
 		</>
