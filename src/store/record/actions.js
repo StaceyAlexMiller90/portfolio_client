@@ -92,6 +92,7 @@ export const removeUserRecord = (recordId) => {
 			dispatch(appDoneLoading())
 		} catch (e) {
 			console.log(e.message)
+			dispatch(showMessageWithTimeout('error', e.response.data.message))
 		}
 	}
 }

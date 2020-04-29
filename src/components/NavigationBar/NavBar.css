@@ -159,7 +159,7 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 	.logo {
-		position: absolute;
+		position: relative;
 		font-size: 2rem;
 	}
 
@@ -171,11 +171,11 @@
 		width: 100vw;
 		text-align: center;
 		place-items: center;
-		margin-top: 4rem;
 	}
 
 	.NavBar {
 		flex-direction: column;
+		height: auto;
 	}
 
 	.NavItem {
@@ -184,12 +184,6 @@
 		right: 0;
 		font-size: 1rem;
 		animation: slideInFromLeft 0.5s ease-in;
-	}
-
-	.activeNavItem {
-		font-family: bigJohn;
-		color: white;
-		background-color: #5333ed;
 	}
 
 	.hamburger-inner::before {
@@ -237,21 +231,31 @@
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-	/* later */
-}
+@media only screen and (min-width: 600px) and (max-width: 1300px) {
+	.logo {
+		position: relative;
+	}
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-	/* later */
-}
+	.NavLinks {
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		background-color: white;
+		width: 100vw;
+		text-align: center;
+		place-items: center;
+	}
 
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-	/* later */
-}
+	.NavBar {
+		flex-direction: column;
+		height: auto;
+	}
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-	/* later */
+	.NavItem {
+		margin: 5px;
+		top: 0;
+		right: 0;
+		font-size: 1rem;
+		animation: slideInFromLeft 0.5s ease-in;
+	}
 }
