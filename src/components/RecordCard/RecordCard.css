@@ -6,44 +6,44 @@
 } */
 
 .record-container {
-	display: flex;
-	flex-wrap: wrap;
-	margin-left: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 100px;
 }
 
 .record-card {
-	position: relative;
-	padding: 1rem 1rem 2rem 1rem;
-	background-color: white;
-	box-shadow: 4px 4px 15px 2px lightgray !important;
-	transition: 0.2s !important;
-	margin-left: -4rem;
+  position: relative;
+  padding: 1rem 1rem 2rem 1rem;
+  background-color: white;
+  box-shadow: 4px 4px 15px 2px lightgray !important;
+  transition: 0.2s !important;
+  margin-left: -4rem;
 }
 
 .record-card:hover,
 .record-card:focus-within {
-	transform: translateY(-0.5rem);
+  transform: translateY(-0.5rem);
 }
 
 .record-card:hover ~ .record-card,
 .record-card:focus-within ~ .record-card {
-	transform: translateX(4rem);
+  transform: translateX(4rem);
 }
 
 .delete:hover {
-	transition: 0.1s;
-	transform: scale(2);
-	cursor: grab;
+  transition: 0.1s;
+  transform: scale(2);
+  cursor: grab;
 }
 
 @media only screen and (max-width: 700px) {
-	.record-card {
-		margin: auto;
-	}
+  .record-card {
+    margin: auto;
+  }
 
-	.record-container {
-		display: flex;
-		flex-wrap: wrap;
-		margin: auto;
-	}
+  .record-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+  }
 }
