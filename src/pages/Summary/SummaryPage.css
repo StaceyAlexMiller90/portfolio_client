@@ -175,3 +175,39 @@
 	grid-row-start: 4;
 	grid-row-end: 5;
 } */
+
+@media only screen and (max-width: 600px) {
+	.container {
+		display: flex;
+		flex-wrap: wrap;
+		width: 80vw;
+	}
+
+	.layout1 .box1 {
+		width: 80vw;
+	}
+
+	.layout1 .box2 {
+		width: 80vw;
+	}
+
+	.layout1 .box3 {
+		width: 80vw;
+	}
+
+	.layout1 .box4 {
+		width: 80vw;
+	}
+
+	.layout1 .box5 {
+		width: 80vw;
+	}
+
+	.layout1 .box6 {
+		width: 80vw;
+	}
+
+	.layout1 .box7 {
+		width: 80vw;
+	}
+}

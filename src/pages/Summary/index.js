@@ -24,7 +24,7 @@ const Summary = () => {
 		}
 	}, [])
 
-	if (!records || records.length === 0) {
+	if (!records) {
 		return <Loading />
 	}
 
@@ -43,7 +43,9 @@ const Summary = () => {
 
 	const oldestYear = Math.min.apply(
 		Math,
-		records.map((record) => record.year)
+		records
+			.filter((record) => record.year !== 'Unknown')
+			.map((record) => record.year)
 	)
 
 	const genres = records.flatMap((record) => record.genre.split(' | '))
@@ -84,9 +86,9 @@ const Summary = () => {
 						fontSize: '2rem',
 					}}
 				>
-					<p>{countedGenres[0].genre}</p>
-					<p>{countedGenres[1].genre}</p>
-					<p>{countedGenres[2].genre}</p>
+					<p>{countedGenres.length >= 1 ? countedGenres[0].genre : ''}</p>
+					<p>{countedGenres.length >= 2 ? countedGenres[1].genre : ''}</p>
+					<p>{countedGenres.length >= 3 ? countedGenres[2].genre : ''}</p>
 				</div>
 			</div>
 			<div className="box3">
@@ -99,7 +101,9 @@ const Summary = () => {
 						color: 'black',
 					}}
 				>
-					{oldestYear}
+					{oldestYear === Infinity
+						? "We won't know until you add your records!"
+						: oldestYear}
 				</p>
 			</div>
 			<div className="box4">
