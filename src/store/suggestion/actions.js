@@ -1,6 +1,6 @@
+import axios from 'axios'
 import { apiUrl } from '../../config/constants'
 import { selectToken } from '../user/selectors'
-import axios from 'axios'
 import {
   appLoading,
   appDoneLoading,

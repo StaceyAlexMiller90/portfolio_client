@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory, Link } from 'react-router-dom'
 import { selectToken } from '../../store/user/selectors'
-import { useHistory } from 'react-router-dom'
-import UploadRecord from '../../components/UploadRecord'
+import { getSuggestions } from '../../store/suggestion/actions'
 import { selectSuggestions } from '../../store/suggestion/selectors'
 import { clearSuggestionInfo } from '../../store/suggestion/actions'
+import UploadRecord from '../../components/UploadRecord'
 import SearchResults from '../SearchResults'
-import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
-import { getSuggestions } from '../../store/suggestion/actions'
 import TextField from '@material-ui/core/TextField'
 import { makeStyles } from '@material-ui/core/styles'
 import { FormGroup } from '@material-ui/core'
@@ -104,11 +103,11 @@ const AddRecords = (props) => {
               Search again by title &/or artist
             </Button>
           </form>
-          {searchedAgain ? (
+          {searchedAgain && (
             <Link to="/manualadd">
               <Button variant="outlined">Still not found?</Button>
             </Link>
-          ) : null}
+          )}
           <Link to="/addrecords">
             <Button variant="outlined" onClick={clearSuggestion}>
               Click here to retake picture

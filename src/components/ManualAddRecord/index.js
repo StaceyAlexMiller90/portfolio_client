@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import Container from '@material-ui/core/Container'
-import Button from '@material-ui/core/Button'
-import { selectToken } from '../../store/user/selectors'
-import { selectSuggestions } from '../../store/suggestion/selectors'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, Link } from 'react-router-dom'
+import { addARecord } from '../../store/record/actions'
+import { selectToken } from '../../store/user/selectors'
+import { selectSuggestions } from '../../store/suggestion/selectors'
+import Container from '@material-ui/core/Container'
+import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import { makeStyles } from '@material-ui/core/styles'
 import { FormGroup } from '@material-ui/core'
-import { addARecord } from '../../store/record/actions'
 
 const useStyles = makeStyles((theme) => ({
   root: {

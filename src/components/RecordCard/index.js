@@ -1,7 +1,8 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { removeUserRecord } from '../../store/record/actions'
-import './RecordCard.css'
+import { addARecord } from '../../store/record/actions'
 import { TiDeleteOutline } from 'react-icons/ti'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
@@ -9,10 +10,10 @@ import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
-import { addARecord } from '../../store/record/actions'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import { useHistory, Link } from 'react-router-dom'
+
+import './RecordCard.css'
 
 const useStyles = makeStyles({
   root: {
@@ -60,9 +61,9 @@ const RecordCard = (props) => {
 
   return (
     <Card className={`${classes.root} record-card`}>
-      {!props.suggestion ? (
+      {!props.suggestion && (
         <TiDeleteOutline className="delete" onClick={() => removeRecord(id)} />
-      ) : null}
+      )}
       <CardActionArea>
         <CardMedia
           style={{ margin: 'auto', width: '300px' }}

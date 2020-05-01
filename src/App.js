@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
-import Loading from './components/Loading'
-import NavigationBar from './components/NavigationBar'
-import MessageBox from './components/MessageBox'
 import { getUserWithStoredToken } from './store/user/actions'
 import { selectAppLoading } from './store/appState/selectors'
 import LandingPage from './pages/LandingPage'
 import Browse from './pages/Browse'
 import AddRecords from './pages/AddRecords'
-import ManualAddRecord from './components/ManualAddRecord'
 import Summary from './pages/Summary'
 import SignUp from './pages/SignUp'
 import Login from './pages/Login'
+import Loading from './components/Loading'
+import NavigationBar from './components/NavigationBar'
+import MessageBox from './components/MessageBox'
+import ManualAddRecord from './components/ManualAddRecord'
 import './App.css'
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
     <div className="App">
       <NavigationBar />
       <MessageBox />
-      {isLoading ? <Loading /> : null}
+      {isLoading && <Loading />}
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route path="/browse" component={Browse} />

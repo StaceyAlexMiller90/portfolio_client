@@ -1,9 +1,9 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectMessage } from '../../store/appState/selectors'
+import { clearMessage } from '../../store/appState/actions'
 import { makeStyles } from '@material-ui/core/styles'
 import Alert from '@material-ui/lab/Alert'
-import { clearMessage } from '../../store/appState/actions'
 
 const useStyles = makeStyles((theme) => ({
   root: {

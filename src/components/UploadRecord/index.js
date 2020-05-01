@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { imageUrl } from '../../config/constants'
-import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader'
+import { imageUrl } from '../../config/constants'
 import { getSuggestions } from '../../store/suggestion/actions'
+import 'react-dropzone-uploader/dist/styles.css'
 
 const UploadRecord = () => {
   const dispatch = useDispatch()

@@ -45,6 +45,23 @@ const MultipleSelect = (props) => {
     props.updateFilter(label, event.target.value)
   }
 
+  const renderValue = (selected) => (
+    <div className={classes.chips}>
+      {selected.map((value) => (
+        <Chip
+          className={classes.chip}
+          key={value}
+          label={value}
+          style={{
+            fontFamily: 'regularJohn',
+            textTransform: 'uppercase',
+            margin: '2px',
+          }}
+        />
+      ))}
+    </div>
+  )
+
   return (
     <FormControl className={classes.formControl}>
       <InputLabel
@@ -63,22 +80,7 @@ const MultipleSelect = (props) => {
         value={filter}
         onChange={handleChange}
         input={<Input id="select-multiple-chip" />}
-        renderValue={(selected) => (
-          <div className={classes.chips}>
-            {selected.map((value) => (
-              <Chip
-                className={classes.chip}
-                key={value}
-                label={value}
-                style={{
-                  fontFamily: 'regularJohn',
-                  textTransform: 'uppercase',
-                  margin: '2px',
-                }}
-              />
-            ))}
-          </div>
-        )}
+        renderValue={renderValue}
         MenuProps={MenuProps}
       >
         {options.map((option) => (
