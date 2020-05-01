@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Container from '@material-ui/core/Container'
 import Button from '@material-ui/core/Button'
 import { selectToken } from '../../store/user/selectors'
