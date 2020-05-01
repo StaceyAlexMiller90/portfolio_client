@@ -8,7 +8,6 @@ import './NavBar.css'
 
 export default function LoggedIn() {
 	const dispatch = useDispatch()
-	const user = useSelector(selectUser)
 
 	return (
 		<>
