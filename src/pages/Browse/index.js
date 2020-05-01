@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { fetchAllUserRecords } from '../../store/record/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { fetchAllUserRecords } from '../../store/record/actions'
 import { selectToken } from '../../store/user/selectors'
 import {
   selectUserRecords,
   selectCountOfUserRecords,
 } from '../../store/record/selectors'
-import { getSelectOptions } from '../../functions'
+import { getSelectOptions } from '../../utils'
+import MultipleSelect from '../../components/MultipleSelect'
 import Loading from '../../components/Loading'
 import RecordCard from '../../components/RecordCard'
-import '../../components/RecordCard/RecordCard.css'
 import TextField from '@material-ui/core/TextField'
-import MultipleSelect from '../../components/MultipleSelect'
-import Button from '@material-ui/core/Button'
+import '../../components/RecordCard/RecordCard.css'
 
 const Browse = () => {
   const dispatch = useDispatch()

@@ -1,15 +1,11 @@
-import { apiUrl } from '../../config/constants'
-import { imageUrl } from '../../config/constants'
-import { selectToken } from '../user/selectors'
 import axios from 'axios'
+import { apiUrl } from '../../config/constants'
+import { selectToken } from '../user/selectors'
 import {
   appLoading,
   appDoneLoading,
   showMessageWithTimeout,
-  setMessage,
 } from '../appState/actions'
-import { clearSuggestionInfo } from '../suggestion/actions'
-import { selectSuggestions } from '../suggestion/selectors'
 
 const userRecordsFetched = (data) => {
   return {

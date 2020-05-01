@@ -18,7 +18,7 @@ export default function NavigationBar() {
         <span className="record">Record</span>
         <span className="nise">nise</span>
       </Link>
-      {open ? (
+      {open && (
         <div className="NavLinks">
           <NavLink
             activeClassName="activeNavItem"
@@ -30,9 +30,9 @@ export default function NavigationBar() {
           </NavLink>
           {loginLogoutControls}
         </div>
-      ) : null}
+      )}
       <button
-        className={`hamburger hamburger--arrowalt ${open ? 'is-active' : null}`}
+        className={`hamburger hamburger--arrowalt ${open && 'is-active'}`}
         type="button"
         onClick={() => setOpen(!open)}
       >

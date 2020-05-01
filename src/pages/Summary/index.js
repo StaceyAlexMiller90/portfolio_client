@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { selectToken } from '../../store/user/selectors'
@@ -8,7 +8,6 @@ import {
 } from '../../store/record/selectors'
 import { fetchAllUserRecords } from '../../store/record/actions'
 import Loading from '../../components/Loading'
-
 import './SummaryPage.css'
 
 const Summary = () => {
@@ -31,11 +30,13 @@ const Summary = () => {
   if (!token) {
     history.push('/')
   }
-  const sortedPrice = [...records].sort((a, b) => b.lowestPrice - a.lowestPrice)
+  const recordsByPrice = [...records].sort(
+    (a, b) => b.lowestPrice - a.lowestPrice
+  )
 
-  const worthOne = sortedPrice.length >= 1 ? sortedPrice[0] : null
-  const worthTwo = sortedPrice.length >= 2 ? sortedPrice[1] : null
-  const worthThree = sortedPrice.length >= 3 ? sortedPrice[2] : null
+  const worthOne = recordsByPrice.length >= 1 && recordsByPrice[0]
+  const worthTwo = recordsByPrice.length >= 2 && recordsByPrice[1]
+  const worthThree = recordsByPrice.length >= 3 && recordsByPrice[2]
 
   const totalPrice = records
     .map((record) => record.lowestPrice)
@@ -55,12 +56,7 @@ const Summary = () => {
   )
 
   const countedGenres = genres
-    .map((genre) => {
-      return {
-        genre: genre,
-        count: aCount.get(genre),
-      }
-    })
+    .map((genre) => ({ genre, count: aCount.get(genre) }))
     .filter((v, i, a) => a.findIndex((t) => t.genre === v.genre) === i)
     .sort((a, b) => b.count - a.count)
 

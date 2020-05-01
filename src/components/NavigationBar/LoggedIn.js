@@ -1,9 +1,7 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { logOut } from '../../store/user/actions'
-import { selectUser } from '../../store/user/selectors'
+import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import Button from '@material-ui/core/Button'
+import { logOut } from '../../store/user/actions'
 import './NavBar.css'
 
 export default function LoggedIn() {

@@ -7,10 +7,14 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case 'SUGGESTIONS_FETCHED':
+      const {
+        image,
+        data: { data, suggestion },
+      } = action.payload
       return {
-        suggestion: action.payload.data.suggestion,
-        data: action.payload.data.data,
-        uploadImage: action.payload.image,
+        suggestion: suggestion,
+        data: data,
+        uploadImage: image,
       }
 
     case 'SUGGESTIONS_CLEARED':

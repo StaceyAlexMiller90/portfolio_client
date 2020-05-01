@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import Container from '@material-ui/core/Container'
-import Loading from '../../components/Loading'
-import { useDispatch, useSelector } from 'react-redux'
-import RecordCard from '../../components/RecordCard'
-import { selectToken } from '../../store/user/selectors'
+import React from 'react'
 import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { selectToken } from '../../store/user/selectors'
 import { selectSuggestions } from '../../store/suggestion/selectors'
+import Loading from '../../components/Loading'
+import RecordCard from '../../components/RecordCard'
 
 const SearchResults = (props) => {
   const token = useSelector(selectToken)

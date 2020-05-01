@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import Container from '@material-ui/core/Container'
-import Button from '@material-ui/core/Button'
-import { login } from '../../store/user/actions'
-import { selectToken } from '../../store/user/selectors'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, Link } from 'react-router-dom'
+import { login } from '../../store/user/actions'
+import { selectToken } from '../../store/user/selectors'
 import TextField from '@material-ui/core/TextField'
 import { makeStyles } from '@material-ui/core/styles'
 import { FormGroup } from '@material-ui/core'
+import Container from '@material-ui/core/Container'
+import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles((theme) => ({
   root: {
