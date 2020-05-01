@@ -16,29 +16,29 @@ import Login from './pages/Login'
 import './App.css'
 
 function App() {
-	const dispatch = useDispatch()
-	const isLoading = useSelector(selectAppLoading)
+  const dispatch = useDispatch()
+  const isLoading = useSelector(selectAppLoading)
 
-	useEffect(() => {
-		dispatch(getUserWithStoredToken())
-	}, [dispatch])
+  useEffect(() => {
+    dispatch(getUserWithStoredToken())
+  }, [dispatch])
 
-	return (
-		<div className="App">
-			<NavigationBar />
-			<MessageBox />
-			{isLoading ? <Loading /> : null}
-			<Switch>
-				<Route exact path="/" component={LandingPage} />
-				<Route path="/browse" component={Browse} />
-				<Route path="/addrecords" component={AddRecords} />
-				<Route path="/manualadd" component={ManualAddRecord} />
-				<Route path="/summary" component={Summary} />
-				<Route path="/signup" component={SignUp} />
-				<Route path="/login" component={Login} />
-			</Switch>
-		</div>
-	)
+  return (
+    <div className="App">
+      <NavigationBar />
+      <MessageBox />
+      {isLoading ? <Loading /> : null}
+      <Switch>
+        <Route exact path="/" component={LandingPage} />
+        <Route path="/browse" component={Browse} />
+        <Route path="/addrecords" component={AddRecords} />
+        <Route path="/manualadd" component={ManualAddRecord} />
+        <Route path="/summary" component={Summary} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="/login" component={Login} />
+      </Switch>
+    </div>
+  )
 }
 
 export default App

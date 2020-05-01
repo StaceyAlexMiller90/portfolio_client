@@ -1,59 +1,59 @@
 body {
-	margin: 0;
-	font-family: 'Quicksand', sans-serif;
-	/* font-family: 'regularJohn'; */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  /* font-family: 'regularJohn'; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
 h2,
 h3 {
-	font-family: 'regularJohn';
-	text-transform: uppercase;
+  font-family: 'regularJohn';
+  text-transform: uppercase;
 }
 
 h4,
 h5,
 h6 {
-	font-family: 'slimJoe';
+  font-family: 'slimJoe';
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-		monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
 @font-face {
-	font-family: 'slimJoe';
-	src: url('./fonts/slim_joe-webfont.woff2') format('woff2'),
-		url('./fonts/slim_joe-webfont.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
+  font-family: 'slimJoe';
+  src: url('./fonts/slim_joe-webfont.woff2') format('woff2'),
+    url('./fonts/slim_joe-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'bigJohn';
-	src: url('./fonts/big_john-webfont.woff2') format('woff2'),
-		url('./fonts/big_john-webfont.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
+  font-family: 'bigJohn';
+  src: url('./fonts/big_john-webfont.woff2') format('woff2'),
+    url('./fonts/big_john-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'regularJohn';
-	src: url('./fonts/bigjohnpro-regular-webfont.woff2') format('woff2'),
-		url('./fonts/bigjohnpro-regular-webfont.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
+  font-family: 'regularJohn';
+  src: url('./fonts/bigjohnpro-regular-webfont.woff2') format('woff2'),
+    url('./fonts/bigjohnpro-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'slimJoeLower';
-	src: url('./fonts/bigjohnpro-light-webfont.woff2') format('woff2'),
-		url('./fonts/bigjohnpro-light-webfont.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
+  font-family: 'slimJoeLower';
+  src: url('./fonts/bigjohnpro-light-webfont.woff2') format('woff2'),
+    url('./fonts/bigjohnpro-light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');

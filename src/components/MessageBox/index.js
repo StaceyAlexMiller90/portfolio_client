@@ -6,30 +6,30 @@ import Alert from '@material-ui/lab/Alert'
 import { clearMessage } from '../../store/appState/actions'
 
 const useStyles = makeStyles((theme) => ({
-	root: {
-		width: '100%',
-		'& > * + *': {
-			marginTop: theme.spacing(2),
-		},
-	},
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
 }))
 
 export default function MessageBox() {
-	const classes = useStyles()
-	const message = useSelector(selectMessage)
-	const dispatch = useDispatch()
-	const showMessage = message !== null
+  const classes = useStyles()
+  const message = useSelector(selectMessage)
+  const dispatch = useDispatch()
+  const showMessage = message !== null
 
-	if (!showMessage) return null
+  if (!showMessage) return null
 
-	return (
-		<div className={classes.root}>
-			<Alert
-				severity={message.variant}
-				onClose={() => dispatch(clearMessage())}
-			>
-				{message.text}
-			</Alert>
-		</div>
-	)
+  return (
+    <div className={classes.root}>
+      <Alert
+        severity={message.variant}
+        onClose={() => dispatch(clearMessage())}
+      >
+        {message.text}
+      </Alert>
+    </div>
+  )
 }

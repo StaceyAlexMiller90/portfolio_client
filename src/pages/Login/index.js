@@ -10,74 +10,74 @@ import { makeStyles } from '@material-ui/core/styles'
 import { FormGroup } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
-	root: {
-		'& > *': {
-			margin: theme.spacing(1),
-			width: '40ch',
-		},
-	},
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '40ch',
+    },
+  },
 }))
 
 export default function SignUp() {
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
-	const dispatch = useDispatch()
-	const token = useSelector(selectToken)
-	const history = useHistory()
-	const classes = useStyles()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const dispatch = useDispatch()
+  const token = useSelector(selectToken)
+  const history = useHistory()
+  const classes = useStyles()
 
-	useEffect(() => {
-		if (token !== null) {
-			history.push('/')
-		}
-	}, [token, history])
+  useEffect(() => {
+    if (token !== null) {
+      history.push('/')
+    }
+  }, [token, history])
 
-	function submitForm(event) {
-		event.preventDefault()
+  function submitForm(event) {
+    event.preventDefault()
 
-		dispatch(login(email, password))
+    dispatch(login(email, password))
 
-		setEmail('')
-		setPassword('')
-	}
+    setEmail('')
+    setPassword('')
+  }
 
-	return (
-		<Container maxWidth="sm" style={{ paddingTop: '3rem' }}>
-			<form className={classes.root}>
-				<h1>Login</h1>
-				<FormGroup>
-					<TextField
-						id="outlined-basic"
-						label="email address"
-						variant="outlined"
-						value={email}
-						onChange={(event) => setEmail(event.target.value)}
-						type="email"
-						placeholder="Enter email"
-						required
-					/>
-				</FormGroup>
-				<FormGroup>
-					<TextField
-						id="outlined-basic"
-						label="password"
-						variant="outlined"
-						value={password}
-						onChange={(event) => setPassword(event.target.value)}
-						type="password"
-						placeholder="Password"
-						required
-					/>
-				</FormGroup>
-				<FormGroup>
-					<Button variant="outlined" type="submit" onClick={submitForm}>
-						Log in
-					</Button>
-				</FormGroup>
-				<Link to="/signup" style={{ color: 'black' }}>
-					Click here to sign up
-				</Link>
-			</form>
-		</Container>
-	)
+  return (
+    <Container maxWidth="sm" style={{ paddingTop: '3rem' }}>
+      <form className={classes.root}>
+        <h1>Login</h1>
+        <FormGroup>
+          <TextField
+            id="outlined-basic"
+            label="email address"
+            variant="outlined"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            type="email"
+            placeholder="Enter email"
+            required
+          />
+        </FormGroup>
+        <FormGroup>
+          <TextField
+            id="outlined-basic"
+            label="password"
+            variant="outlined"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            type="password"
+            placeholder="Password"
+            required
+          />
+        </FormGroup>
+        <FormGroup>
+          <Button variant="outlined" type="submit" onClick={submitForm}>
+            Log in
+          </Button>
+        </FormGroup>
+        <Link to="/signup" style={{ color: 'black' }}>
+          Click here to sign up
+        </Link>
+      </form>
+    </Container>
+  )
 }

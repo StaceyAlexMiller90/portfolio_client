@@ -1,1 +1,1 @@
-export const selectSuggestions = state => state.suggestion
+export const selectSuggestions = (state) => state.suggestion
