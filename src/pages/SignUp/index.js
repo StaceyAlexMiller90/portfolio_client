@@ -44,7 +44,7 @@ export default function SignUp() {
   }
 
   return (
-    <Container maxWidth="sm" style={{ paddingTop: '3rem' }}>
+    <Container maxWidth="sm" style={{ paddingTop: '3rem', overflow: 'hidden' }}>
       <form className={classes.root}>
         <h1>Sign up</h1>
         <FormGroup>

@@ -5,6 +5,7 @@ import { selectToken } from '../../store/user/selectors'
 import { selectSuggestions } from '../../store/suggestion/selectors'
 import Loading from '../../components/Loading'
 import RecordCard from '../../components/RecordCard'
+import '../../components/RecordCard/RecordCard.css'
 
 const SearchResults = (props) => {
   const token = useSelector(selectToken)

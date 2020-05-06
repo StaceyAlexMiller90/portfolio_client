@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import { makeStyles } from '@material-ui/core/styles'
 import { FormGroup } from '@material-ui/core'
+import './AddRecords.css'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,16 +56,22 @@ const AddRecords = (props) => {
       }}
     >
       {!suggestions.suggestion ? (
-        <div>
-          <h3>Add records to your collection</h3>
-          <h5>Take a quick pic & we do the hard work for you</h5>
-          <p>
-            This feature uses image recognition technology - once uploaded, your
-            image will be scanned for text & matching articles on the web & the
-            closest matching result is returned.
-          </p>
-          ! Please ensure that there is no additional text in your
-          image/background e.g. promotional stickers
+        <div className="upload-record-body">
+          <div className="upload-text">
+            <h3>Add records to your collection</h3>
+            <h5>Take a quick pic and we do the hard work for you</h5>
+            <p>
+              This feature uses image recognition technology - once uploaded,
+              your image will be scanned for text and matching articles on the
+              web and the closest matching result is returned.
+              <br></br>
+              <p>
+                <span className="highlight">!</span> Please ensure that there is
+                no additional text in your image/background e.g. promotional
+                stickers.
+              </p>
+            </p>
+          </div>
           <UploadRecord />
         </div>
       ) : (
