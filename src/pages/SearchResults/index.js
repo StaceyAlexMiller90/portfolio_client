@@ -31,7 +31,7 @@ const SearchResults = (props) => {
         src={suggestions.uploadImage}
       ></img>
       <p>Search results:</p>
-      <div style={{ marginLeft: '100px' }}>
+      <div>
         {results.length === 0 ? (
           <p>Sorry, no records were found</p>
         ) : (

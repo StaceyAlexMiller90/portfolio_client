@@ -81,7 +81,7 @@ const AddRecords = (props) => {
             Please select the option that best matches your record, or decide to
             add info manually
           </h5>
-          <form className={classes.root}>
+          <form className={`${classes.root} form`}>
             <FormGroup>
               <TextField
                 id="outlined-basic"
@@ -106,20 +106,30 @@ const AddRecords = (props) => {
                 required
               />
             </FormGroup>
-            <Button variant="outlined" onClick={searchAgain}>
+            <Button
+              className="search-button"
+              variant="outlined"
+              onClick={searchAgain}
+            >
               Search again by title &/or artist
             </Button>
-          </form>
-          {searchedAgain && (
-            <Link to="/manualadd">
-              <Button variant="outlined">Still not found?</Button>
+            {searchedAgain && (
+              <Link to="/manualadd">
+                <Button className="search-button" variant="outlined">
+                  Still not found?
+                </Button>
+              </Link>
+            )}
+            <Link to="/addrecords">
+              <Button
+                className="search-button"
+                variant="outlined"
+                onClick={clearSuggestion}
+              >
+                Click here to retake picture
+              </Button>
             </Link>
-          )}
-          <Link to="/addrecords">
-            <Button variant="outlined" onClick={clearSuggestion}>
-              Click here to retake picture
-            </Button>
-          </Link>
+          </form>
           <SearchResults
             recordUrl={suggestions.uploadImage}
             suggestions={suggestions}

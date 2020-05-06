@@ -8,3 +8,9 @@
   font-family: bigJohn;
   font-size: 1.5rem;
 }
+
+.search-button {
+  background-color: #5333ed !important;
+  color: white !important;
+  width: 40ch !important;
+}
