@@ -8,6 +8,8 @@ import {
   setMessage,
 } from '../appState/actions'
 
+console.log(apiUrl)
+
 const loginSuccess = (userWithToken) => {
   return {
     type: 'LOGIN_SUCCESS',
