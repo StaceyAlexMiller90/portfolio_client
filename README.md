@@ -23,7 +23,7 @@ This app is still a work in progress, suggestions for improvements are always we
 - I plan to separate all genres/styles/artists into their own database tables. Currently they are stored in the records table as a string
 - I would like to add a feature for users to follow eachother and view eachothers collections
 - I would like to add some pagination for when the collection gets large
-- I would like to tweak the search results to try to make it more accurate.
+- I would like to tweak the search results from GOOGLE & DISCOGS to try to make it more accurate.
 - I would like to add a details page where you can listen via youtube and view a tracklist - I already pull this information from the discogs database
 
 ### THE PROBLEM
@@ -42,7 +42,7 @@ As a DJ or music lover...
 
 ### DEMO
 
-Insert Video
+![](/src/img/DEMO.gif)
 
 ### TECH USED
 
@@ -55,6 +55,7 @@ Insert Video
 - REST API
 - SEQUELIZE
 - POSTGRESQL
+- CSS ANIMATIONS & FLEXBOX / GRID
 
 ### GIT WORKFLOW
 

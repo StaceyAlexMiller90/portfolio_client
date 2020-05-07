@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { fetchAllUserRecords } from '../../store/record/actions'
-import { selectToken } from '../../store/user/selectors'
-import {
-  selectUserRecords,
-  selectCountOfUserRecords,
-} from '../../store/record/selectors'
+import { selectToken, selectUser } from '../../store/user/selectors'
+import { selectUserRecords } from '../../store/record/selectors'
 import { getSelectOptions } from '../../utils'
 import MultipleSelect from '../../components/MultipleSelect'
 import Loading from '../../components/Loading'
@@ -19,7 +16,7 @@ const Browse = () => {
   const token = useSelector(selectToken)
   const history = useHistory()
   const records = useSelector(selectUserRecords)
-  const count = useSelector(selectCountOfUserRecords)
+  const user = useSelector(selectUser)
   const [genre, setGenre] = useState([])
   const [style, setStyle] = useState([])
   const [year, setYear] = useState([])
@@ -77,11 +74,17 @@ const Browse = () => {
     return false
   })
 
+  const headerText =
+    records.length === 0
+      ? 'You currently have no records on your shelf'
+      : filteredRecords.length === 0
+      ? 'No records match your filters'
+      : `Displaying ${filteredRecords.length} records on your shelf`
+
   return (
-    <>
+    <div style={{ margin: '20px' }}>
       <div
         style={{
-          margin: '20px',
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'left',
@@ -120,36 +123,27 @@ const Browse = () => {
           updateFilter={updateFilter}
         />
       </div>
-      {records.length === 0 ? (
-        <p>You currently have no records on your shelf</p>
-      ) : filteredRecords.length === 0 ? (
-        <p> No records match your filters </p>
-      ) : (
-        <>
-          <p>
-            Displaying {filteredRecords.length} of {count} records on your shelf
-          </p>
-          <div className="record-container">
-            {filteredRecords.map((record) => {
-              return (
-                <RecordCard
-                  key={record.id}
-                  id={record.id}
-                  title={record.title}
-                  artist={record.artist}
-                  year={record.year}
-                  genre={record.genre}
-                  style={record.style}
-                  format={record.format}
-                  lowestPrice={record.lowestPrice}
-                  imageUrl={record.imageUrl}
-                />
-              )
-            })}
-          </div>
-        </>
-      )}
-    </>
+      <h3 style={{ color: '#5333ed' }}>Hey {user.name}...</h3>
+      <p>{headerText}</p>
+      <div className="record-container">
+        {filteredRecords.map((record) => {
+          return (
+            <RecordCard
+              key={record.id}
+              id={record.id}
+              title={record.title}
+              artist={record.artist}
+              year={record.year}
+              genre={record.genre}
+              style={record.style}
+              format={record.format}
+              lowestPrice={record.lowestPrice}
+              imageUrl={record.imageUrl}
+            />
+          )
+        })}
+      </div>
+    </div>
   )
 }
 
