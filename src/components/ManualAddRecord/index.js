@@ -40,11 +40,9 @@ const ManualAddRecord = () => {
 
   const addRecord = (event) => {
     event.preventDefault()
-    console.log(record)
     dispatch(
       addARecord({
         ...record,
-        lowestPrice: record.lowestPrice,
         genre: record.genre.split(/[ ,]+/).join(' | '),
         style: record.genre.split(/[ ,]+/).join(' | '),
       })
