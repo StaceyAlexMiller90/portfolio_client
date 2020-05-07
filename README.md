@@ -10,25 +10,25 @@
 
 ### Overview
 
-RECORDNISE is a way to digitalise your record collection. The app relies on both the GOOGLE cloud vision API & the DISCOGS database API for easy referencing on records based just on an image upload from the sleeve.
+RECORDNISE is a way to digitalise your record collection. The app relies on both the GOOGLE cloud vision API and the DISCOGS database API for easy referencing on records based just on an image upload from the sleeve.
 
 The goal of this project is to create something I am interested in - (I live for music), that showcases all of the skills I have learned so far as a trainee full stack developer.
 
-I also wanted to experiment with new technologies & API's that I didn't use before.
+I also wanted to experiment with new technologies and API's that I didn't use before.
 
 This app is still a work in progress, suggestions for improvements are always welcome!
 
-#### Some reflections & things I plan to add or improve on.
+#### Some reflections and things I plan to add or improve on.
 
 - I plan to separate all genres/styles/artists into their own database tables. Currently they are stored in the records table as a string
-- I would like to add a feature for users to follow eachother & view eachothers collections
+- I would like to add a feature for users to follow eachother and view eachothers collections
 - I would like to add some pagination for when the collection gets large
 - I would like to tweak the search results to try to make it more accurate.
-- I would like to add a details page where you can listen via youtube & view a tracklist - I already pull this information from the discogs database
+- I would like to add a details page where you can listen via youtube and view a tracklist - I already pull this information from the discogs database
 
 ### THE PROBLEM
 
-As a DJ or music lover with an extensive vinyl collection, I am unable to browse my collection quickly & I often forget what I have! I wish there was an easy way to digitalise my collection.
+As a DJ or music lover with an extensive vinyl collection, I am unable to browse my collection quickly and I often forget what I have! I wish there was an easy way to digitalise my collection.
 
 ### USER STORIES
 
