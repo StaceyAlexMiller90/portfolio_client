@@ -6,7 +6,9 @@
 
 (either log in as test@test.com, test1234 or sign up!)
 
-[link to the recordnise server repo](https://github.com/StaceyAlexMiller90/recordnise_server)
+### Demo
+
+![](/src/img/DEMO.gif)
 
 ### Overview
 
@@ -16,7 +18,9 @@ The goal of this project is to create something I am interested in - (I live for
 
 I also wanted to experiment with new technologies and API's that I didn't use before.
 
-This app is still a work in progress, suggestions for improvements are always welcome!
+For styling I used some Material UI components but also experimented with some CSS myself
+
+\* This app is still a work in progress, suggestions for improvements are always welcome!
 
 #### Some reflections and things I plan to add or improve on.
 
@@ -26,11 +30,11 @@ This app is still a work in progress, suggestions for improvements are always we
 - I would like to tweak the search results from GOOGLE & DISCOGS to try to make it more accurate.
 - I would like to add a details page where you can listen via youtube and view a tracklist - I already pull this information from the discogs database
 
-### THE PROBLEM
+### The problem
 
 As a DJ or music lover with an extensive vinyl collection, I am unable to browse my collection quickly and I often forget what I have! I wish there was an easy way to digitalise my collection.
 
-### USER STORIES
+### User stories
 
 As a DJ or music lover...
 
@@ -40,11 +44,7 @@ As a DJ or music lover...
 - I would like to see an interesting summary of my record collection e.g. value, most common genre etc.
 - \* coming soon \* I would like to get inspiration from others collections
 
-### DEMO
-
-![](/src/img/DEMO.gif)
-
-### TECH USED
+### Tech Used
 
 - REACT
 - REDUX
@@ -57,10 +57,14 @@ As a DJ or music lover...
 - POSTGRESQL
 - CSS ANIMATIONS & FLEXBOX / GRID
 
-### GIT WORKFLOW
+### Git
 
 In this project I used:
 
 - New branches when implementing new features
 - Clear commit messages
 - Regular commits
+
+### Backend
+
+[link to the recordnise server repo](https://github.com/StaceyAlexMiller90/recordnise_server)
