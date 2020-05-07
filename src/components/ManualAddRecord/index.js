@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, Link } from 'react-router-dom'
+import { PLACEHOLDER_IMAGE } from '../../config/constants'
 import { addARecord } from '../../store/record/actions'
 import { selectToken } from '../../store/user/selectors'
 import { selectSuggestions } from '../../store/suggestion/selectors'
@@ -23,25 +24,27 @@ const ManualAddRecord = () => {
   const suggestions = useSelector(selectSuggestions)
   const [record, setRecord] = useState({
     id: null,
-    title: null,
-    artist: null,
-    genre: null,
-    style: null,
+    title: '',
+    artist: '',
+    genre: '',
+    style: '',
     format: 'Vinyl',
     lowestPrice: 0,
     year: 2020,
-    imageUrl: suggestions.uploadImage,
+    imageUrl: suggestions.uploadImage || PLACEHOLDER_IMAGE,
   })
-
   const dispatch = useDispatch()
   const token = useSelector(selectToken)
   const classes = useStyles()
   const history = useHistory()
 
-  const addRecord = () => {
+  const addRecord = (event) => {
+    event.preventDefault()
+    console.log(record)
     dispatch(
       addARecord({
         ...record,
+        lowestPrice: record.lowestPrice,
         genre: record.genre.split(/[ ,]+/).join(' | '),
         style: record.genre.split(/[ ,]+/).join(' | '),
       })
@@ -56,7 +59,7 @@ const ManualAddRecord = () => {
   return (
     <>
       <img
-        src={suggestions.uploadImage}
+        src={suggestions.uploadImage || PLACEHOLDER_IMAGE}
         alt="User Upload"
         style={{ width: '100px' }}
       ></img>
@@ -65,7 +68,7 @@ const ManualAddRecord = () => {
         style={{ paddingTop: '3rem', overflow: 'hidden' }}
       >
         <h1>Manually add your record</h1>
-        <form className={classes.root}>
+        <form className={classes.root} onSubmit={addRecord}>
           <FormGroup>
             <TextField
               id="outlined-basic"
@@ -152,7 +155,10 @@ const ManualAddRecord = () => {
               helperText="if this field is left blank we will record 0"
               value={record.lowestPrice}
               onChange={(event) =>
-                setRecord({ ...record, lowestPrice: event.target.value })
+                setRecord({
+                  ...record,
+                  lowestPrice: event.target.value,
+                })
               }
               type="number"
               placeholder="Enter the lowest price for this record"
@@ -163,7 +169,6 @@ const ManualAddRecord = () => {
               style={{ backgroundColor: '#5333ed', color: 'white' }}
               variant="outlined"
               type="submit"
-              onClick={addRecord}
             >
               Add record
             </Button>
