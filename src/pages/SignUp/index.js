@@ -85,7 +85,12 @@ export default function SignUp() {
           />
         </FormGroup>
         <FormGroup>
-          <Button variant="outlined" type="submit" onClick={submitForm}>
+          <Button
+            style={{ backgroundColor: '#5333ed', color: 'white' }}
+            variant="outlined"
+            type="submit"
+            onClick={submitForm}
+          >
             Sign up
           </Button>
         </FormGroup>
