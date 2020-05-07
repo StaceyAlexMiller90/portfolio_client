@@ -97,9 +97,7 @@ const Summary = () => {
             color: 'black',
           }}
         >
-          {oldestYear === Infinity
-            ? "We won't know until you add your records!"
-            : oldestYear}
+          {oldestYear === Infinity ? '?' : oldestYear}
         </p>
       </div>
       <div className="box4">

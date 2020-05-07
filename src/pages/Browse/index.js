@@ -39,10 +39,6 @@ const Browse = () => {
     return <Loading />
   }
 
-  // const updatePagination = () => {
-  // 	dispatch(fetchPageUserRecords(records.length, 10))
-  // }
-
   const getOptionsRecords = getSelectOptions(records)
   const genreArray = getOptionsRecords('genre')
   const styleArray = getOptionsRecords('style')
@@ -151,11 +147,6 @@ const Browse = () => {
               )
             })}
           </div>
-          {/* {records.length < count ? (
-						<Button variant="outlined" onClick={updatePagination}>
-							Click to see more
-						</Button>
-					) : null} */}
         </>
       )}
     </>

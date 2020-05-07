@@ -7,7 +7,7 @@ import Loading from '../../components/Loading'
 import RecordCard from '../../components/RecordCard'
 import '../../components/RecordCard/RecordCard.css'
 
-const SearchResults = (props) => {
+const SearchResults = () => {
   const token = useSelector(selectToken)
   const history = useHistory()
   const suggestions = useSelector(selectSuggestions)

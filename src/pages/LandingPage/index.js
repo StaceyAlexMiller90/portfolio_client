@@ -10,9 +10,9 @@ const LandingPage = () => {
           <span className="bigJohn">We at Recordnise</span> share your love BUT
           we also definitely share your pain. Nothing beats that good old sound
           of the needle hitting that fine record you just dug... on the other
-          hand,there is nothing worse then buying doubles, not finding records
-          whilst you were almost certain you had it (or did you?) and losing
-          track of that precious hobby you have going on.
+          hand, there is nothing worse than buying doubles, not finding records
+          whilst you were certain you had it (or did you?) and losing track of
+          that precious hobby you have going on.
           <br></br>
           <span className="bigJohn">
             <br></br>This all belongs to the past now!

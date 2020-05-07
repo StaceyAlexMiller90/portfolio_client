@@ -1,17 +1,30 @@
-# RECORDNISE
+![](/src/img/logo.png)
 
-### APP OVERVIEW
+### Check it out!
 
-[click the link to see it in action!](https://recordnise.netlify.app/)
+[click the link to demo for yourself!](https://recordnise.netlify.app/)
+
+(either log in as test@test.com, test1234 or sign up!)
 
 [link to the recordnise server repo](https://github.com/StaceyAlexMiller90/recordnise_server)
 
-RECORDNISE is a way to digitalise your record collection. The app relies on both the GOOGLE cloud vision API & the DISCOGS database API for easy referencing on records based just on an image upload from your shelf.
+### Overview
 
-The goal of this project is to create something I am interested in, that showcases all of the skills I have learned so far as a trainee full stack developer.
-I also wanted to experiment with new technologies & API's.
+RECORDNISE is a way to digitalise your record collection. The app relies on both the GOOGLE cloud vision API & the DISCOGS database API for easy referencing on records based just on an image upload from the sleeve.
+
+The goal of this project is to create something I am interested in - (I live for music), that showcases all of the skills I have learned so far as a trainee full stack developer.
+
+I also wanted to experiment with new technologies & API's that I didn't use before.
 
 This app is still a work in progress, suggestions for improvements are always welcome!
+
+#### Some reflections & things I plan to add or improve on.
+
+- I plan to separate all genres/styles/artists into their own database tables. Currently they are stored in the records table as a string
+- I would like to add a feature for users to follow eachother & view eachothers collections
+- I would like to add some pagination for when the collection gets large
+- I would like to tweak the search results to try to make it more accurate.
+- I would like to add a details page where you can listen via youtube & view a tracklist - I already pull this information from the discogs database
 
 ### THE PROBLEM
 
@@ -19,37 +32,17 @@ As a DJ or music lover with an extensive vinyl collection, I am unable to browse
 
 ### USER STORIES
 
-- As a DJ or music lover I would like to easy browse through my record collection without getting covered in dust
-- As a DJ or music lover I need to be able to add my records quickly using image upload otherwise it becomes too time consuming to use
-- As a DJ or music lover I want the app to already guess the record rather than having to manually type it in
-- As a DJ or music lover I would like to see an interesting summary of my record collection & be able to share this with my friends
-- As a DJ or music lover I would like to get inspiration from others collections \* coming soon
+As a DJ or music lover...
 
-### STILLS FROM THE APP
+- I would like to easy browse through my record collection digitally
+- I need to be able to add my records quickly using image upload otherwise it becomes too time consuming to use
+- I want the app to already suggest the record rather than having to manually type it in
+- I would like to see an interesting summary of my record collection e.g. value, most common genre etc.
+- \* coming soon \* I would like to get inspiration from others collections
 
-Landing page:
-![](/src/img/landingpage.png 'Landing Page')
+### DEMO
 
-Log In & Sign Up:
-![](/src/img/login.png 'Log In')
-![](/src/img/signup.png 'Sign Up')
-
-Adding records:
-![](/src/img/imageupload.png 'Image Upload')
-
-Search Results:
-![](/src/img/searchresults1.png 'Search Results')
-![](/src/img/searchresults2.png 'Search Results')
-
-Manual Search options:
-![](/src/img/manualsearchoption.png 'Manual Search')
-![](/src/img/manualaddform.png 'Manual Search')
-
-Browse Records:
-![](/src/img/browse.png 'Browse Collection')
-
-Collection Summary:
-![](/src/img/summary.png 'Collection Summary')
+Insert Video
 
 ### TECH USED
 
@@ -58,12 +51,15 @@ Collection Summary:
 - REACT DROPZONE UPLOADER
 - CLOUDINARY
 - MATERIAL UI
-- EXPRESS - REST API
+- EXPRESS
+- REST API
 - SEQUELIZE
+- POSTGRESQL
 
 ### GIT WORKFLOW
 
 In this project I used:
 
-- git branches when implementing new features
-- clear commit messages
+- New branches when implementing new features
+- Clear commit messages
+- Regular commits

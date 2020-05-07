@@ -156,7 +156,12 @@ const ManualAddRecord = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Button variant="outlined" type="submit" onClick={addRecord}>
+            <Button
+              style={{ backgroundColor: '#5333ed', color: 'white' }}
+              variant="outlined"
+              type="submit"
+              onClick={addRecord}
+            >
               Add record
             </Button>
           </FormGroup>
