@@ -25,6 +25,9 @@ export default (state = initialState, action) => {
         records: state.records.filter((record) => record.id !== action.payload),
       }
 
+    case 'CLEAR_USER_RECORDS':
+      return initialState
+
     default:
       return state
   }

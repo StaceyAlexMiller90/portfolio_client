@@ -92,3 +92,7 @@ export const removeUserRecord = (recordId) => {
     }
   }
 }
+
+export const clearRecords = () => {
+  return { type: 'CLEAR_USER_RECORDS' }
+}

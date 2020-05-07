@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { removeUserRecord } from '../../store/record/actions'
 import { addARecord } from '../../store/record/actions'
 import { TiDeleteOutline } from 'react-icons/ti'
@@ -95,18 +95,11 @@ const RecordCard = (props) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        {!props.suggestion ? (
-          <Button size="small" color="primary">
-            Share this record
-          </Button>
-        ) : (
+        {props.suggestion && (
           <Button size="small" color="primary" onClick={addRecord}>
             Add this record to my collection
           </Button>
         )}
-        <Button size="small" color="primary">
-          More Details
-        </Button>
       </CardActions>
     </Card>
   )

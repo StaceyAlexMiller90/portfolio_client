@@ -8,7 +8,7 @@ import {
   setMessage,
 } from '../appState/actions'
 
-console.log(apiUrl)
+import { clearRecords } from '../record/actions'
 
 const loginSuccess = (userWithToken) => {
   return {
@@ -22,7 +22,14 @@ const tokenStillValid = (userWithoutToken) => ({
   payload: userWithoutToken,
 })
 
-export const logOut = () => ({ type: 'LOG_OUT' })
+const loggingOut = () => ({ type: 'LOG_OUT' })
+
+export const logOut = () => {
+  return async (dispatch) => {
+    dispatch(clearRecords())
+    dispatch(loggingOut())
+  }
+}
 
 export const signUp = (name, email, password, isArtist) => {
   return async (dispatch, getState) => {

@@ -1,0 +1,33 @@
+.dropzone {
+  width: 90vw;
+  height: 40vh;
+  margin-top: 1rem;
+}
+
+.inputlabel {
+  font-family: 'bigJohn';
+  color: black;
+  text-align: center;
+}
+
+.preview {
+  height: 400px;
+  width: 90vw;
+}
+
+.previewImage {
+  max-height: 200px;
+  max-width: 200px;
+}
+
+.submitButton {
+  background-color: #5333ed;
+  font-family: 'bigJohn';
+}
+
+@media only screen and (max-width: 600px) {
+  .previewImage {
+    max-height: 100px;
+    max-width: 100px;
+  }
+}

@@ -4,6 +4,7 @@ import Dropzone from 'react-dropzone-uploader'
 import { imageUrl } from '../../config/constants'
 import { getSuggestions } from '../../store/suggestion/actions'
 import 'react-dropzone-uploader/dist/styles.css'
+import './UploadRecord.css'
 
 const UploadRecord = () => {
   const dispatch = useDispatch()
@@ -34,12 +35,22 @@ const UploadRecord = () => {
 
   return (
     <Dropzone
-      styles={{
-        dropzone: { width: '500px', height: '400px', marginTop: '50px' },
-        inputLabel: { color: 'black' },
-        preview: { height: '400px' },
-        previewImage: { maxHeight: '200px', maxWidth: '200px' },
+      addClassNames={{
+        dropzone: 'dropzone',
+        inputLabel: 'inputlabel',
+        preview: 'preview',
+        previewImage: 'previewImage',
+        submitButton: 'submitButton',
       }}
+      // styles={{
+      //   dropzone: { width: '90vw', height: '40vh', marginTop: '1rem' },
+      //   inputLabel: { color: 'black' },
+      //   preview: { height: '400px', width: '90vw' },
+      //   previewImage: {
+      //     maxHeight: '200px',
+      //     maxWidth: '200px',
+      //   },
+      // }}
       getUploadParams={getUploadParams}
       // onChangeStatus={handleChangeStatus}
       onSubmit={handleSubmit}

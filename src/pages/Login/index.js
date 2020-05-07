@@ -42,7 +42,7 @@ export default function SignUp() {
   }
 
   return (
-    <Container maxWidth="sm" style={{ paddingTop: '3rem' }}>
+    <Container maxWidth="sm" style={{ paddingTop: '3rem', overflow: 'hidden' }}>
       <form className={classes.root}>
         <h1>Login</h1>
         <FormGroup>
@@ -70,7 +70,12 @@ export default function SignUp() {
           />
         </FormGroup>
         <FormGroup>
-          <Button variant="outlined" type="submit" onClick={submitForm}>
+          <Button
+            style={{ backgroundColor: '#5333ed', color: 'white' }}
+            variant="outlined"
+            type="submit"
+            onClick={submitForm}
+          >
             Log in
           </Button>
         </FormGroup>

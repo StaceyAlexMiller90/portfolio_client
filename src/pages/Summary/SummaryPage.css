@@ -1,11 +1,11 @@
 .container {
-  margin: 15px;
-  padding: 3rem;
+  padding: 5vw;
   height: 70vh;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-gap: 1rem;
+  overflow-x: hidden;
 }
 
 .bigJohn-quote {
@@ -118,96 +118,44 @@
   grid-row-end: 5;
 }
 
-/* For later implementation for dynamic styling */
-
-/* .layout2 .box1 {
-	background-color: #ff0055;
-	grid-column-start: 5;
-	grid-column-end: 7;
-	grid-row-start: 1;
-	grid-row-end: 3;
-}
-
-.layout2 .box2 {
-	background-color: brown;
-	grid-column-start: 3;
-	grid-column-end: 5;
-	grid-row-start: 3;
-	grid-row-end: 5;
-}
-
-.layout2 .box3 {
-	background-color: brown;
-	grid-column-start: 5;
-	grid-column-end: 7;
-	grid-row-start: 3;
-	grid-row-end: 5;
-}
-
-.layout2 .box4 {
-	background-color: brown;
-	grid-column-start: 1;
-	grid-column-end: 3;
-	grid-row-start: 1;
-	grid-row-end: 2;
-}
-
-.layout2 .box5 {
-	background-color: brown;
-	grid-column-start: 1;
-	grid-column-end: 3;
-	grid-row-start: 2;
-	grid-row-end: 3;
-}
-
-.layout2 .box6 {
-	background-color: brown;
-	grid-column-start: 1;
-	grid-column-end: 3;
-	grid-row-start: 3;
-	grid-row-end: 4;
-}
-
-.layout2 .box7 {
-	background-color: brown;
-	grid-column-start: 1;
-	grid-column-end: 3;
-	grid-row-start: 4;
-	grid-row-end: 5;
-} */
-
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1300px) {
   .container {
     display: flex;
     flex-wrap: wrap;
-    width: 80vw;
   }
 
   .layout1 .box1 {
-    width: 80vw;
+    width: 90vw;
+    margin-bottom: 10px;
   }
 
   .layout1 .box2 {
-    width: 80vw;
+    width: 90vw;
+    margin-bottom: 10px;
   }
 
   .layout1 .box3 {
-    width: 80vw;
+    width: 90vw;
+    margin-bottom: 10px;
   }
 
   .layout1 .box4 {
-    width: 80vw;
+    width: 90vw;
+    margin-bottom: 10px;
   }
 
   .layout1 .box5 {
-    width: 80vw;
+    width: 90vw;
+    margin-bottom: 10px;
   }
 
   .layout1 .box6 {
-    width: 80vw;
+    width: 90vw;
+    margin-bottom: 10px;
   }
 
   .layout1 .box7 {
-    width: 80vw;
+    width: 90vw;
+    margin-bottom: 10px;
   }
 }
