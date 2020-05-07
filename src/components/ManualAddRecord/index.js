@@ -13,7 +13,7 @@ import { FormGroup } from '@material-ui/core'
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
-      margin: theme.spacing(1),
+      marginBottom: theme.spacing(1),
       width: '40ch',
     },
   },
@@ -60,9 +60,12 @@ const ManualAddRecord = () => {
         alt="User Upload"
         style={{ width: '100px' }}
       ></img>
-      <Container maxWidth="sm">
+      <Container
+        maxWidth="sm"
+        style={{ paddingTop: '3rem', overflow: 'hidden' }}
+      >
+        <h1>Manually add your record</h1>
         <form className={classes.root}>
-          <h1 className="mt-5 mb-5">Manually add your record</h1>
           <FormGroup>
             <TextField
               id="outlined-basic"
