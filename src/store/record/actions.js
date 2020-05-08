@@ -47,7 +47,6 @@ const addedRecord = (record) => {
 export const addARecord = (record) => {
   return async (dispatch, getState) => {
     const token = selectToken(getState())
-    console.log(record)
     dispatch(appLoading())
     try {
       const response = await axios.post(`${apiUrl}/records`, record, {
