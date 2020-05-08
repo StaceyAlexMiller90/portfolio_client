@@ -22,9 +22,9 @@ RECORDNISE is a way to digitalise your record collection. The app relies on both
 
 The goal of this project is to create something I am interested in - (I live for music), that showcases all of the skills I have learned so far as a trainee full stack developer.
 
-I wanted to experiment with new technologies and API's that I didn't use before.
-I wanted to implement a many-to-many database relationship between Users & Records
-For styling I used some Material UI components but also experimented with some responsive CSS myself.
+- I wanted to experiment with new technologies and API's that I didn't use before.
+- I wanted to implement a many-to-many database relationship between Users & Records
+- For styling I used some Material UI components but also experimented with some responsive CSS myself.
 
 \* This app is still a work in progress, suggestions for improvements are always welcome!
 
