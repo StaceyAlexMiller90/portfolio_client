@@ -65,11 +65,11 @@ const AddRecords = (props) => {
               your image will be scanned for text and matching articles on the
               web and the closest matching result is returned.
               <br></br>
-              <p>
-                <span className="highlight">!</span> Please ensure that there is
-                no additional text in your image/background e.g. promotional
-                stickers.
-              </p>
+            </p>
+            <p>
+              <span className="highlight">!</span> Please ensure that there is
+              no additional text in your image/background e.g. promotional
+              stickers.
             </p>
           </div>
           <UploadRecord />

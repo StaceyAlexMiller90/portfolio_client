@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import Dropzone from 'react-dropzone-uploader'
 import { imageUrl } from '../../config/constants'
 import { getSuggestions } from '../../store/suggestion/actions'
@@ -20,10 +20,6 @@ const UploadRecord = () => {
       headers: { 'X-Requested-With': 'XMLHttpRequest' },
     }
   }
-  // called every time a file's `status` changes
-  // const handleChangeStatus = ({ meta, file }, status) => {
-  //   console.log(status, meta, file)
-  // }
 
   // receives array of files that are done uploading when submit button is clicked
   const handleSubmit = (files, allFiles) => {
@@ -42,17 +38,7 @@ const UploadRecord = () => {
         previewImage: 'previewImage',
         submitButton: 'submitButton',
       }}
-      // styles={{
-      //   dropzone: { width: '90vw', height: '40vh', marginTop: '1rem' },
-      //   inputLabel: { color: 'black' },
-      //   preview: { height: '400px', width: '90vw' },
-      //   previewImage: {
-      //     maxHeight: '200px',
-      //     maxWidth: '200px',
-      //   },
-      // }}
       getUploadParams={getUploadParams}
-      // onChangeStatus={handleChangeStatus}
       onSubmit={handleSubmit}
       inputContent={'Drag or click to add your record cover'}
       inputWithFilesContent={null}

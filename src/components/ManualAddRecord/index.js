@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { PLACEHOLDER_IMAGE } from '../../config/constants'
 import { addARecord } from '../../store/record/actions'
 import { selectToken } from '../../store/user/selectors'

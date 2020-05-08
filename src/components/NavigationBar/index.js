@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectToken } from '../../store/user/selectors'
 import LoggedIn from './LoggedIn'
@@ -14,10 +14,10 @@ export default function NavigationBar() {
 
   return (
     <div className="NavBar">
-      <Link className="logo" exact to="/">
+      <NavLink className="logo" exact to="/">
         <span className="record">Record</span>
         <span className="nise">nise</span>
-      </Link>
+      </NavLink>
       {open && (
         <div className="NavLinks">
           <NavLink
